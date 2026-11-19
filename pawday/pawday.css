@@ -118,8 +118,8 @@ h1 em { color: var(--burnt-orange); }
   --crop-y: 16;
   --crop-width: 218;
   --crop-height: 267;
-  top: 4%;
-  left: 20%;
+  top: 6%;
+  left: 21.5%;
   width: 27%;
   rotate: -6deg;
 }
@@ -128,8 +128,8 @@ h1 em { color: var(--burnt-orange); }
   --crop-y: 16;
   --crop-width: 217;
   --crop-height: 267;
-  top: 4%;
-  right: 20%;
+  top: 6%;
+  right: 21.5%;
   width: 27%;
   rotate: 6deg;
 }
@@ -138,8 +138,8 @@ h1 em { color: var(--burnt-orange); }
   --crop-y: 292;
   --crop-width: 218;
   --crop-height: 262;
-  top: 29%;
-  left: 1%;
+  top: 30.5%;
+  left: 2.5%;
   width: 25.5%;
   rotate: -17deg;
 }
@@ -148,8 +148,8 @@ h1 em { color: var(--burnt-orange); }
   --crop-y: 291;
   --crop-width: 216;
   --crop-height: 264;
-  top: 29%;
-  right: 1%;
+  top: 30.5%;
+  right: 2.5%;
   width: 25.5%;
   rotate: 17deg;
 }
