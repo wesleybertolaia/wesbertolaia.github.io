@@ -141,21 +141,34 @@
     apply(document);
     const mount = document.querySelector('[data-language-menu]');
     if (!mount || window.self !== window.top) return;
-    const select = document.createElement('select');
-    select.className = 'language-picker';
-    select.setAttribute('aria-label', t('Language'));
-    select.add(new Option('EN', 'en'));
-    select.add(new Option('PT-BR', 'pt-BR'));
-    select.value = language;
-    select.addEventListener('change', () => {
-      const next = new URL(location.href);
-      next.searchParams.set('lang', select.value);
-      const project = document.querySelector('.project-card[aria-pressed="true"]')?.dataset.project;
-      if (project) next.searchParams.set('demo', project);
-      try { localStorage.setItem(key, select.value); } catch { /* The URL carries the choice. */ }
-      location.assign(next);
-    });
-    mount.replaceChildren(select);
+    const toggle = document.createElement('div');
+    toggle.className = 'language-toggle';
+    toggle.setAttribute('role', 'group');
+    toggle.setAttribute('aria-label', t('Language'));
+
+    const options = [
+      ['en', 'English', '<rect width="28" height="20" fill="#fff"/><path d="M0 1h28M0 4h28M0 7h28M0 10h28M0 13h28M0 16h28M0 19h28" stroke="#b22234" stroke-width="1.55"/><path fill="#3c3b6e" d="M0 0h12v11H0z"/><path stroke="#fff" stroke-width="1.3" stroke-linecap="round" d="M2 2h.1M6 2h.1M10 2h.1M4 5.5h.1M8 5.5h.1M2 9h.1M6 9h.1M10 9h.1"/>'],
+      ['pt-BR', 'Português do Brasil', '<rect width="28" height="20" fill="#009739"/><path fill="#ffdf00" d="M14 2.5 25 10 14 17.5 3 10z"/><circle cx="14" cy="10" r="4.5" fill="#002776"/><path d="M10 9q4-1 8 2.5" fill="none" stroke="#fff" stroke-width="1.3"/>'],
+    ];
+    for (const [value, label, flag] of options) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.lang = value;
+      button.setAttribute('aria-label', label);
+      button.setAttribute('aria-pressed', String(language === value));
+      button.innerHTML = `<svg viewBox="0 0 28 20" aria-hidden="true" focusable="false">${flag}</svg>`;
+      button.addEventListener('click', () => {
+        if (language === value) return;
+        const next = new URL(location.href);
+        next.searchParams.set('lang', value);
+        const project = document.querySelector('.project-card[aria-pressed="true"]')?.dataset.project;
+        if (project) next.searchParams.set('demo', project);
+        try { localStorage.setItem(key, value); } catch { /* The URL carries the choice. */ }
+        location.assign(next);
+      });
+      toggle.append(button);
+    }
+    mount.replaceChildren(toggle);
   }
 
   window.siteLocale = { language, t, date, url, apply, template };

@@ -15,3 +15,26 @@
 .language-picker option { color: CanvasText; background: Canvas; }
 header:has(> [data-language-menu]) { flex-wrap: wrap; gap: .45rem .8rem; }
 header nav:has(> [data-language-menu]) { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; }
+
+.language-toggle {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.language-toggle button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.language-toggle button[aria-pressed="true"] {
+  background: var(--panel);
+  border-color: var(--lime);
+}
+.language-toggle svg { width: 24px; height: auto; border-radius: 3px; }
