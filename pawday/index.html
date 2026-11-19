@@ -5,32 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Pawday daycare, boarding and grooming for dogs and cats.">
   <title>Pawday | Daycare, boarding & grooming</title>
-  <link rel="stylesheet" href="./pawday.css?v=portrait">
-  <script src="../locale.js?v=pawday" defer></script>
-  <script src="./pawday.js" defer></script>
+  <link rel="stylesheet" href="./pawday.css?v=one-screen">
+  <script src="../locale.js?v=pawday-screen" defer></script>
+  <script src="./pawday.js?v=one-screen" defer></script>
 </head>
-<body>
-  <header class="wrap top"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span> Pawday</a><nav><a href="#services">Services</a><a href="#bookings">Bookings</a><span data-language-menu></span></nav></header>
+<body data-view="home">
+  <header class="wrap top"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"></span> Pawday</a><nav><a href="#services">Services</a><a href="#bookings">Bookings</a><span data-language-menu></span></nav></header>
   <main class="wrap">
     <section class="hero" aria-labelledby="headline">
       <div class="hero-copy"><p class="kicker">Daycare · Boarding · Grooming</p>
-        <h1 id="headline">Good days for <em>good pets.</em></h1>
+        <h1 id="headline" tabindex="-1">Good days for <em>good pets.</em></h1>
         <p>A play day, a weekend stay, or a fresh coat. Find the right care for your dog or cat and see the price before you book.</p>
-        <a class="button" href="#services">Find pet care <span aria-hidden="true">↗</span></a>
+        <div class="hero-actions">
+          <a class="button" href="#services">Find pet care <span aria-hidden="true">↗</span></a>
+          <a class="secondary-link" href="#bookings">Your bookings</a>
+        </div>
+        <a class="button preview-launch" href="./#services" target="_blank" rel="noopener">Find pet care</a>
       </div>
       <figure class="portrait" aria-hidden="true">
-        <div class="pet-photo dog-photo"><img src="./pawday-portraits.jpg" alt="" width="1200" height="800" fetchpriority="high"></div>
-        <div class="pet-photo cat-photo"><img src="./pawday-portraits.jpg" alt="" width="1200" height="800"></div>
-        <span class="portrait-spark"></span>
+        <img src="./pawday-paw.webp" alt="" width="840" height="840" fetchpriority="high">
       </figure>
     </section>
     <section id="services" aria-labelledby="services-title">
-      <div class="section-head"><h2 id="services-title">What does your pet need?</h2>
+      <a class="panel-back" href="#home">Back to Pawday</a>
+      <div class="section-head"><h2 id="services-title" tabindex="-1">What does your pet need?</h2>
         <div class="species" role="group" aria-label="Pet type"><button type="button" data-species="dog" aria-pressed="true">Dog</button><button type="button" data-species="cat" aria-pressed="false">Cat</button></div>
       </div>
       <div class="services" id="service-list"></div>
     </section>
     <section class="booking" id="booking" hidden aria-labelledby="booking-title">
+      <a class="panel-back" href="#services">Back to services</a>
       <h2 id="booking-title" tabindex="-1">Plan a visit</h2>
       <p id="service-summary"></p>
       <form id="visit-form"><label>Sample pet<select name="pet" required></select></label>
@@ -43,11 +47,18 @@
         <div class="actions"><button class="button" type="button" id="confirm">Confirm sample booking</button><button type="button" id="edit">Edit details</button></div>
       </div>
     </section>
-    <section class="booking" id="bookings" aria-labelledby="bookings-title">
+    <section class="booking" id="bookings" hidden aria-labelledby="bookings-title">
+      <a class="panel-back" href="#home">Back to Pawday</a>
       <h2 id="bookings-title" tabindex="-1">Your bookings</h2>
-      <p id="booking-status" role="status"></p><div id="history"></div>
+      <p id="booking-status" role="status"></p>
+      <div id="history"></div>
+      <div class="booking-pages" id="booking-pages" hidden>
+        <button type="button" id="previous-booking">Previous booking</button>
+        <output id="booking-page" aria-live="polite"></output>
+        <button type="button" id="next-booking">Next booking</button>
+      </div>
+      <p class="booking-disclosure">Practice bookings stay on this device.</p>
     </section>
   </main>
-  <footer class="wrap">Practice bookings stay on this device.</footer>
 </body>
 </html>

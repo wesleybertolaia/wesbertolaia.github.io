@@ -1,5 +1,9 @@
 (() => {
   const messages = {
+    "Back to Pawday": "Voltar ao início",
+    "Back to services": "Voltar aos serviços",
+    "Previous booking": "Reserva anterior",
+    "Next booking": "Próxima reserva",
     "Dog & cat care": "Cuidados para cães e gatos",
     "Pawday live demo": "Demo interativa da Pawday",
     "Pet owners comparing overnight stays need to know whether the service suits their animal and what the full stay costs.": "Ao comparar hospedagens, os tutores precisam saber se o serviço atende ao seu pet e quanto custa a estadia inteira.",

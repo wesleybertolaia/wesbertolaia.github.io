@@ -18,6 +18,7 @@
   const booking = get('booking');
   const form = get('visit-form');
   const review = get('review');
+  const bookings = get('bookings');
   const confirm = get('confirm');
   const { pet, start, end, time } = form.elements;
   const key = 'pawday.bookings.v1';
@@ -25,6 +26,7 @@
   let serviceIndex = 0;
   let draft;
   let records = [];
+  let recordIndex = 0;
   try {
     const saved = JSON.parse(localStorage.getItem(key));
     if (Array.isArray(saved)) records = saved;
@@ -45,8 +47,39 @@
 
   function show(element) {
     element.focus({ preventScroll: true });
-    element.scrollIntoView({ block: 'nearest' });
   }
+
+  function display(view, focusHeading = true) {
+    document.body.dataset.view = view;
+    booking.hidden = view !== 'booking';
+    bookings.hidden = view !== 'bookings';
+    if (focusHeading) {
+      const headings = { home: 'headline', services: 'services-title', booking: 'booking-title', bookings: 'bookings-title' };
+      show(get(headings[view]));
+    }
+  }
+
+  function readView(focusHeading = true) {
+    const view = location.hash.slice(1);
+    if (view === 'booking' && pet.options.length) display(view, focusHeading);
+    else if (view === 'services' || view === 'booking') display('services', focusHeading);
+    else display(view === 'bookings' ? view : 'home', focusHeading);
+  }
+
+  function navigate(view) {
+    const hash = '#' + view;
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    display(view);
+  }
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    event.preventDefault();
+    navigate(link.hash.slice(1));
+  });
+  window.addEventListener('popstate', () => readView());
+  window.addEventListener('hashchange', () => readView());
 
   function dayLabel(value) {
     return new Intl.DateTimeFormat(window.siteLocale.language, {
@@ -87,10 +120,9 @@
         time.disabled = get('time-label').hidden = overnight;
         form.hidden = false;
         review.hidden = true;
-        booking.hidden = false;
         get('booking-error').textContent = '';
         renderSummary();
-        show(get('booking-title'));
+        navigate('booking');
       });
       card.append(node('h3', t(name)), node('p', t(description)),
         node('strong', price(entry)), button);
@@ -120,33 +152,49 @@
   }
 
   function renderHistory() {
-    get('history').replaceChildren(...records.map(record => {
-      const row = node('article', undefined, 'record');
-      const details = node('div');
-      details.append(node('strong', record.pet + ' · ' + t(record.name)), node('p', dateRange(record)),
-        node('p', record.reference + ' · ' + money(record.total) + ' · ' + t(record.cancelled ? 'Cancelled' : 'Confirmed')));
-      row.append(details);
-      if (!record.cancelled) {
-        const button = node('button', t('Cancel booking'));
-        button.type = 'button';
-        button.addEventListener('click', () => {
-          record.cancelled = true;
-          save('Sample booking cancelled.');
-          show(get('bookings-title'));
-        });
-        row.append(button);
-      }
-      return row;
-    }));
-    if (!records.length) get('history').append(node('p', t('No bookings yet.')));
+    const historyList = get('history');
+    const record = records[recordIndex];
+    get('booking-pages').hidden = records.length <= 1;
+    get('previous-booking').disabled = recordIndex === 0;
+    get('next-booking').disabled = recordIndex >= records.length - 1;
+    get('booking-page').textContent = (recordIndex + 1) + ' / ' + records.length;
+    if (!record) {
+      historyList.replaceChildren(node('p', t('No bookings yet.')));
+      return;
+    }
+    const row = node('article', undefined, 'record');
+    const details = node('div');
+    details.append(node('strong', record.pet + ' · ' + t(record.name)), node('p', dateRange(record)),
+      node('p', record.reference + ' · ' + money(record.total) + ' · ' + t(record.cancelled ? 'Cancelled' : 'Confirmed')));
+    row.append(details);
+    if (!record.cancelled) {
+      const button = node('button', t('Cancel booking'));
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        record.cancelled = true;
+        save('Sample booking cancelled.');
+        show(get('bookings-title'));
+      });
+      row.append(button);
+    }
+    historyList.replaceChildren(row);
   }
+
+  get('previous-booking').addEventListener('click', () => {
+    recordIndex -= 1;
+    renderHistory();
+  });
+  get('next-booking').addEventListener('click', () => {
+    recordIndex += 1;
+    renderHistory();
+  });
 
   for (const button of document.querySelectorAll('[data-species]')) {
     button.addEventListener('click', () => {
       if (species === button.dataset.species) return;
       species = button.dataset.species;
       draft = undefined;
-      booking.hidden = true;
+      pet.replaceChildren();
       renderServices();
     });
   }
@@ -186,13 +234,16 @@
     const reference = 'PD-' + crypto.randomUUID().slice(0, 8).toUpperCase();
     records.unshift({ ...draft, reference, cancelled: false });
     draft = undefined;
-    booking.hidden = true;
+    recordIndex = 0;
     save('Sample booking confirmed.');
-    show(get('bookings-title'));
+    history.replaceState(null, '', '#bookings');
+    display('bookings');
   });
 
+  document.body.toggleAttribute('data-embedded', window.self !== window.top);
   renderServices();
   renderHistory();
+  readView(false);
   document.addEventListener('portfolio-language-change', () => {
     renderServices();
     if (!booking.hidden) renderSummary();
