@@ -1,15 +1,15 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 :root {
-  --paper: #f6fcfb;
+  --paper: #fbf9f4;
   --surface: #fff;
-  --ink: #173533;
-  --muted: #45625e;
-  --tiffany: #81d8d0;
-  --teal: #11645e;
-  --teal-hover: #0c4945;
-  --line: #cde4df;
-  --control-line: #648783;
+  --ink: #202b3d;
+  --muted: #505d70;
+  --mist: #dbe6f6;
+  --navy: #2b4468;
+  --navy-hover: #1f3454;
+  --line: #d5dbe3;
+  --control-line: #717e91;
   color: var(--ink);
   background: var(--paper);
   font: 16px/1.5 system-ui, sans-serif;
@@ -24,26 +24,25 @@ header.top { padding: .4rem 0; margin-bottom: .55rem; border-bottom: 1px solid v
   width: 1.15rem;
   aspect-ratio: 1;
   border-radius: 50% 50% 50% 30%;
-  background: var(--teal);
-  box-shadow: -.2rem -.14rem 0 var(--tiffany);
+  background: var(--navy);
+  box-shadow: -.2rem -.14rem 0 var(--mist);
   transform: rotate(-18deg);
 }
 a { color: inherit; text-underline-offset: .2em; }
 header nav a { padding-block: .5rem; }
 button,select,input { color: inherit; font: inherit; }
 button,.button { min-height: 44px; border: 1px solid var(--control-line); border-radius: 6px; padding: .45rem .9rem; background: var(--surface); cursor: pointer; }
-.button { display: inline-flex; align-items: center; gap: .55rem; background: var(--teal); border-color: var(--teal); color: white; text-decoration: none; font-weight: 720; }
-.button:hover { background: var(--teal-hover); }
-:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.button { display: inline-flex; align-items: center; gap: .55rem; background: var(--navy); border-color: var(--navy); color: white; text-decoration: none; font-weight: 720; }
+.button:hover { background: var(--navy-hover); }
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   align-items: stretch;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 16px;
-  background: radial-gradient(ellipse at 4% 0%, #fceae5, transparent 57%),
-    radial-gradient(ellipse at 100% 100%, #bcece7, transparent 63%), #fff;
+  border-radius: 18px;
+  background: #edf2f9;
 }
 .hero-copy {
   position: relative;
@@ -53,9 +52,9 @@ button,.button { min-height: 44px; border: 1px solid var(--control-line); border
   padding-right: 0;
 }
 h1,h2,h3,p,figure { margin: 0; }
-.kicker { font-weight: 700; font-size: .8rem; color: var(--teal); }
+.kicker { font-weight: 700; font-size: .8rem; color: var(--navy); }
 h1 { margin: .55rem 0 .85rem; max-width: 12ch; font: 600 clamp(2.6rem,6vw,6rem)/.95 Georgia,serif; letter-spacing: -.055em; }
-h1 em { color: var(--teal); }
+h1 em { color: var(--navy); }
 .hero-copy > p:not(.kicker) { max-width: 39ch; color: var(--muted); }
 .hero-actions {
   display: flex;
@@ -64,7 +63,7 @@ h1 em { color: var(--teal); }
   flex-wrap: wrap;
   margin-top: .75rem;
 }
-.secondary-link,.panel-back { display: inline-flex; align-items: center; min-height: 44px; color: var(--teal); }
+.secondary-link,.panel-back { display: inline-flex; align-items: center; min-height: 44px; color: var(--navy); }
 .panel-back { margin-bottom: .25rem; }
 #services > .panel-back { display: none; }
 .landing-dialog {
@@ -75,9 +74,9 @@ h1 em { color: var(--teal); }
   border-radius: 14px;
   color: inherit;
   background: var(--paper);
-  box-shadow: 0 16px 48px #17353325;
+  box-shadow: 0 16px 48px #202b3d25;
 }
-.landing-dialog::backdrop { background: #17353377; }
+.landing-dialog::backdrop { background: #202b3d77; }
 .landing-dialog .booking { margin: 0; }
 .portrait {
   align-self: center;
@@ -88,17 +87,82 @@ h1 em { color: var(--teal); }
 #services { padding: .75rem 0; }
 .section-head h2,h2 { font: 600 clamp(1.45rem,3vw,2.15rem)/1.1 Georgia,serif; letter-spacing: -.03em; }
 .species { display: flex; gap: .3rem; }
-.species button[aria-pressed=true] { background: var(--tiffany); border-color: var(--teal); color: var(--ink); }
+.species button[aria-pressed=true] { background: var(--mist); border-color: var(--navy); color: var(--ink); }
 .services { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .7rem; margin-top: .75rem; }
-.service { border: 1px solid var(--line); border-radius: 12px; padding: .8rem 1rem; background: var(--surface); }
-.service h3 { font-family: Georgia, serif; }
-.service p { margin-block: .3rem .65rem; color: var(--muted); }
-.booking { max-width: 780px; margin: .4rem auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 1rem; }
-.booking h2 { margin-bottom: .45rem; }
-form { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,150px),1fr)); gap: .65rem; margin-top: .7rem; align-items: end; }
-form label { display: grid; gap: .2rem; }
+.service {
+  --card-background: var(--surface);
+  --card-ink: var(--ink);
+  --card-muted: var(--muted);
+  --card-rule: var(--line);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--card-rule);
+  border-radius: 14px;
+  background: var(--card-background);
+  color: var(--card-ink);
+}
+.service-stay {
+  --card-background: #293e5e;
+  --card-ink: #fff;
+  --card-muted: #e4ebf6;
+  --card-rule: #617391;
+}
+.service-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .2rem .45rem;
+  padding: .85rem .9rem 0;
+}
+.service h3 { font: 650 clamp(1.1rem, 2vw, 1.45rem)/1.15 Georgia, serif; }
+.service-price { display: grid; flex: none; justify-items: end; gap: .15rem; line-height: 1.05; }
+.service-price strong { font-size: 1.13rem; }
+.service-price span { color: var(--card-muted); font-size: .72rem; }
+.service-description { flex: 1; padding: .3rem .9rem .65rem; color: var(--card-muted); font-size: .875rem; }
+.service .service-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .35rem;
+  width: 100%;
+  padding: .45rem .9rem;
+  border: 0;
+  border-top: 1px solid var(--card-rule);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: .875rem;
+  font-weight: 750;
+  text-align: left;
+}
+.service .service-action:hover { background: var(--mist); color: var(--ink); }
+.service .service-action:focus-visible { outline-offset: -3px; }
+.service-stay .service-action:focus-visible { outline-color: white; }
+.booking { max-width: 780px; margin: .4rem auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: clamp(.75rem, 3vw, 1.5rem); }
+.booking h2 { margin-bottom: .35rem; }
+#service-summary { color: var(--muted); }
+#visit-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .55rem .75rem; margin-top: .7rem; align-items: end; }
+#visit-form label { display: grid; gap: .2rem; min-width: 0; font-weight: 650; font-size: .875rem; }
+.pet-field,.form-summary,.form-actions,#booking-error { grid-column: 1 / -1; }
+.form-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .15rem .55rem;
+  padding: .5rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #edf2f9;
+  font-size: .875rem;
+}
+.form-summary output { font-weight: 750; }
+.form-actions { display: flex; justify-content: flex-end; }
 input,select { min-height: 44px; width: 100%; min-width: 0; padding: .35rem; border: 1px solid var(--control-line); border-radius: 8px; background: white; }
-#booking-error:not(:empty),#booking-status:not(:empty) { color: #842c1a; }
+#booking-error:not(:empty) { color: #842c1a; }
+#booking-status:not(:empty) { color: var(--navy); font-weight: 650; }
 dl { display: grid; grid-template-columns: auto 1fr; gap: .35rem .65rem; }
 dd { margin: 0; }
 .record { display: flex; gap: .6rem; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: .6rem 0; border-top: 1px solid var(--line); }
@@ -107,7 +171,7 @@ dd { margin: 0; }
 header .language-toggle { display: inline-flex; }
 header .language-toggle button { padding: .35rem; min-width: 44px; }
 header .language-toggle svg { display: block; width: 23px; }
-header .language-toggle button[aria-pressed=true] { background: #dcf6f1; border-color: var(--teal); }
+header .language-toggle button[aria-pressed=true] { background: #e7eef9; border-color: var(--navy); }
 @media (max-width: 664px), (max-height: 399px) {
   #services > .panel-back { display: inline-flex; }
 }
@@ -119,21 +183,11 @@ header .language-toggle button[aria-pressed=true] { background: #dcf6f1; border-
   .portrait {
     width: min(82%, 360px, 33svh);
   }
-  .services { display: grid; grid-template-columns: 1fr; gap: .4rem; }
-  .services .service {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: .1rem .45rem;
-    align-items: center;
-    padding: .45rem .55rem;
-  }
-  .service p { grid-column: 1 / -1; grid-row: 2; }
-  .service strong { grid-column: 1; grid-row: 3; }
-  .services .service p { margin: 0; font-size: .83rem; line-height: 1.3; }
-  .services .service strong { margin: 0; font-size: .83rem; }
-  .services .service button { grid-column: 2; grid-row: 1; max-width: 7rem; padding-inline: .45rem; font-size: .8rem; }
-  .booking { padding: .65rem; }
-  form { gap: .4rem; }
+  .services { grid-template-columns: 1fr; gap: .45rem; }
+  .service-heading { padding: .5rem .65rem 0; }
+  .service-description { padding: .15rem .65rem .35rem; font-size: .8rem; }
+  .service .service-action { padding-inline: .65rem; font-size: .82rem; }
+  #visit-form { gap: .4rem .45rem; }
 }
 @media (max-width: 380px) {
   header.top { gap: .35rem; }
@@ -142,21 +196,17 @@ header .language-toggle button[aria-pressed=true] { background: #dcf6f1; border-
   #services .section-head { gap: .35rem; }
   #services h2 { font-size: 1.2rem; }
   #services .panel-back { margin-bottom: 0; }
-  .services .service { padding-block: .28rem; }
   .services { margin-top: .4rem; }
   .hero-actions { gap: .15rem .6rem; }
   .hero-actions a { font-size: .875rem; }
 }
-.service strong { display: block; margin-bottom: .65rem; }
-.service button { background: var(--surface); font-weight: 650; }
-.service button:hover { border-color: var(--teal); background: var(--paper); }
 #booking-error:empty { display: none; }
+#review-details { padding: .65rem .75rem; border-radius: 8px; background: #edf2f9; }
+#review-details > :nth-last-child(-n + 2) { padding-top: .4rem; border-top: 1px solid var(--line); font-weight: 750; }
 #review .actions { justify-content: flex-start; margin-top: .75rem; }
-.service { display: flex; flex-direction: column; align-items: flex-start; }
-.service strong { margin-top: auto; }
 @media (prefers-reduced-motion: no-preference) {
   .portrait { animation: settle-in .65s ease-out both; }
-  .service button { transition: background-color .18s ease, border-color .18s ease; }
+  .service-action { transition: background-color .18s ease, color .18s ease; }
   @keyframes settle-in { from { opacity: .55; } }
 }
 @media (min-width: 665px) and (max-height: 800px) {
@@ -167,27 +217,19 @@ header .language-toggle button[aria-pressed=true] { background: #dcf6f1; border-
   .portrait { width: min(86%, 226px); }
   #services { padding-block: .45rem; }
   .services { margin-top: .45rem; }
-  .service { padding: .55rem .7rem; }
-  .service p { font-size: .875rem; line-height: 1.3; margin-block: .2rem .4rem; }
-  .service strong { margin-bottom: .35rem; }
+  .service-heading { padding: .55rem .7rem 0; }
+  .service-description { padding: .2rem .7rem .4rem; line-height: 1.35; }
+  .service .service-action { padding-inline: .7rem; }
 }
 
 @media (min-width: 665px) and (min-height: 471px) and (max-height: 800px) {
   .portrait { width: min(86%, 350px, 45svh); }
 }
 @media (min-width: 665px) and (min-height: 400px) and (max-height: 470px) {
-  .services .service {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: .35rem;
-    align-items: center;
-    padding: .35rem .6rem;
-  }
-  .service h3,.service p { grid-column: 1 / -1; }
-  .service strong { align-self: center; margin: 0; font-size: .8rem; }
-  .service button { padding-inline: .45rem; font-size: .8rem; }
+  .service-heading { padding: .4rem .6rem 0; }
+  .service-description { padding: .15rem .6rem .35rem; font-size: .8rem; }
+  .service .service-action { padding-inline: .6rem; }
   .hero .kicker { display: none; }
-  .service p { margin-block: .15rem .25rem; }
   .hero-copy { padding-block: .6rem; }
   .portrait { width: min(85%, 202px); }
 }

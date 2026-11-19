@@ -44,6 +44,27 @@
     style: 'currency', currency: 'USD', maximumFractionDigits: 0,
   }).format(amount);
   const price = ([, , rate, unit]) => money(rate) + ' / ' + t(unit);
+  const bookingActions = ['Book daycare', 'Book a stay', 'Book grooming'];
+  const overnightStay = () => service()[3] === 'per night';
+
+  function countNights() {
+    return (Date.parse(end.value) - Date.parse(start.value)) / 86400000;
+  }
+
+  function stayRate(nights) {
+    return t(nights === 1 ? '{count} night at {price}' : '{count} nights at {price}')
+      .replace('{count}', nights).replace('{price}', money(service()[2]));
+  }
+
+  function renderEstimate() {
+    const overnight = overnightStay();
+    get('stay-estimate').hidden = !overnight;
+    if (!overnight) return;
+    const nights = countNights();
+    const valid = start.value >= localToday() && Number.isInteger(nights) && nights > 0;
+    get('stay-rate').textContent = valid ? stayRate(nights) : price(service());
+    get('stay-total').textContent = valid ? money(nights * service()[2]) : t('Choose both dates');
+  }
 
   function show(element) {
     element.focus({ preventScroll: true });
@@ -115,11 +136,17 @@
       button.setAttribute('aria-pressed', String(button.dataset.species === species));
     }
     list.replaceChildren(...catalog[species].map((entry, index) => {
-      const [name, description] = entry;
+      const [name, description, rate, unit] = entry;
       const card = node('article', undefined, 'service');
-      const button = node('button', t('Choose service'));
+      const heading = node('header', undefined, 'service-heading');
+      const cost = node('p', undefined, 'service-price');
+      cost.append(node('strong', money(rate)), node('span', t(unit)));
+      heading.append(node('h3', t(name)), cost);
+      if (unit === 'per night') card.classList.add('service-stay');
+      const button = node('button', t(bookingActions[index]), 'service-action');
+      button.append(node('span', '↗'));
+      button.lastElementChild.setAttribute('aria-hidden', 'true');
       button.type = 'button';
-      button.setAttribute('aria-label', t('Choose service') + ': ' + t(name));
       button.addEventListener('click', () => {
         serviceIndex = index;
         draft = undefined;
@@ -135,21 +162,26 @@
         review.hidden = true;
         get('booking-error').textContent = '';
         renderSummary();
+        renderEstimate();
         navigate('booking');
       });
-      card.append(node('h3', t(name)), node('p', t(description)),
-        node('strong', price(entry)), button);
+      card.append(heading, node('p', t(description), 'service-description'), button);
       return card;
     }));
   }
 
   function renderSummary() {
-    get('service-summary').textContent = t(service()[0]) + ' · ' + price(service());
+    const overnight = overnightStay();
+    get('arrival-label').textContent = t(overnight ? 'Check-in date' : 'Start date');
+    get('booking-title').textContent = t(overnight ? 'Book an overnight stay' : 'Plan a visit');
+    get('service-summary').textContent = overnight ? t(service()[1]) : t(service()[0]) + ' · ' + price(service());
   }
 
   function renderReview() {
     const fields = [['Pet', draft.pet], ['Service', t(draft.name)],
-      ['Visit', dateRange(draft)], ['Total', money(draft.total)]];
+      ['Visit', dateRange(draft)]];
+    if (draft.end) fields.push(['Nightly rate', stayRate(countNights())]);
+    fields.push(['Total', money(draft.total)]);
     get('review-details').replaceChildren(...fields.flatMap(([label, value]) =>
       [node('dt', t(label)), node('dd', value)]));
   }
@@ -215,13 +247,18 @@
   start.addEventListener('change', () => {
     end.min = start.value || start.min;
     get('booking-error').textContent = '';
+    renderEstimate();
+  });
+  end.addEventListener('change', () => {
+    get('booking-error').textContent = '';
+    renderEstimate();
   });
 
   form.addEventListener('submit', event => {
     event.preventDefault();
     const [name, , rate, unit] = service();
     const overnight = unit === 'per night';
-    const nights = overnight ? (Date.parse(end.value) - Date.parse(start.value)) / 86400000 : 1;
+    const nights = overnight ? countNights() : 1;
     if (start.value < localToday() || !Number.isInteger(nights) || nights < 1) {
       get('booking-error').textContent = t(start.value < localToday()
         ? 'Choose today or a future start date.' : 'Choose a checkout date after the start date.');
@@ -260,7 +297,10 @@
   if (location.hash === '#services') navigate('services');
   document.addEventListener('portfolio-language-change', () => {
     renderServices();
-    if (!booking.hidden) renderSummary();
+    if (!booking.hidden) {
+      renderSummary();
+      renderEstimate();
+    }
     if (!booking.hidden && !review.hidden) renderReview();
     renderHistory();
   });

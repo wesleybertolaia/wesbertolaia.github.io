@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Pawday daycare, boarding and grooming for dogs and cats.">
   <title>Pawday | Daycare, boarding & grooming</title>
-  <link rel="stylesheet" href="./pawday.css?v=landing">
-  <script src="../locale.js?v=pawday-screen" defer></script>
-  <script src="./pawday.js?v=landing" defer></script>
+  <link rel="stylesheet" href="./pawday.css?v=stay">
+  <script src="../locale.js?v=pawday-stay" defer></script>
+  <script src="./pawday.js?v=stay" defer></script>
 </head>
 <body>
   <header class="wrap top"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"></span> Pawday</a><nav><a href="#services">Services</a><a href="#bookings">Bookings</a><span data-language-menu></span></nav></header>
@@ -41,11 +41,16 @@
       <a class="panel-back" href="#services">Back to services</a>
       <h2 id="booking-title" tabindex="-1">Plan a visit</h2>
       <p id="service-summary"></p>
-      <form id="visit-form"><label>Sample pet<select name="pet" required></select></label>
-        <label>Start date<input type="date" name="start" required></label>
-        <label id="end-label">Checkout date<input type="date" name="end"></label>
+      <form id="visit-form">
+        <label class="pet-field">Sample pet<select name="pet" required></select></label>
+        <label><span id="arrival-label">Start date</span><input type="date" name="start" id="arrival" required></label>
+        <label id="end-label">Checkout date<input type="date" name="end" id="checkout"></label>
         <label id="time-label">Time<select name="time"><option>09:00</option><option>12:00</option><option>15:00</option></select></label>
-        <p id="booking-error" role="alert"></p><button class="button" type="submit">Review booking</button>
+        <div class="form-summary" id="stay-estimate" hidden>
+          <span id="stay-rate"></span><output id="stay-total" for="arrival checkout" aria-live="polite"></output>
+        </div>
+        <p id="booking-error" role="alert"></p>
+        <div class="form-actions"><button class="button" type="submit">Review booking</button></div>
       </form>
       <div id="review" hidden><dl id="review-details"></dl><p>Sample booking. No payment is taken.</p>
         <div class="actions"><button class="button" type="button" id="confirm">Confirm sample booking</button><button type="button" id="edit">Edit details</button></div>

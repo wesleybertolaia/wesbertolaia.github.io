@@ -1,5 +1,14 @@
 (() => {
   const messages = {
+    "Book daycare": "Reservar creche",
+    "Book a stay": "Reservar estadia",
+    "Book grooming": "Agendar banho e tosa",
+    "Book an overnight stay": "Reservar hospedagem",
+    "Check-in date": "Data de entrada",
+    "Nightly rate": "Diárias",
+    "Choose both dates": "Escolha as duas datas",
+    "{count} night at {price}": "{count} diária de {price}",
+    "{count} nights at {price}": "{count} diárias de {price}",
     "Back to Pawday": "Voltar ao início",
     "Back to services": "Voltar aos serviços",
     "Previous booking": "Reserva anterior",
