@@ -1,5 +1,13 @@
 (() => {
   const messages = {
+    "Patients may hesitate to start when they don’t know what happens next.": "Pacientes podem hesitar em começar quando não sabem o que acontece depois.",
+    "Intake completion per visit: guided entry vs. direct entry.": "Formulários concluídos por visita: entrada guiada versus direta.",
+    "Patients are asked for details before they know if an appointment time works for them.": "Pacientes precisam informar seus dados antes de saber se há um horário que funciona para eles.",
+    "Booking requests per visit: show available times first vs. lead with the request.": "Solicitações de agendamento por visita: mostrar horários primeiro versus começar pela solicitação.",
+    "New employees can get stuck logging their first shift, especially when entering breaks.": "Novos funcionários podem ter dificuldades no primeiro registro de jornada, especialmente ao informar intervalos.",
+    "Valid first shifts per new user: editable example vs. blank form.": "Primeiros registros válidos por novo usuário: exemplo editável versus formulário em branco.",
+    "Problem tackled": "Problema abordado",
+
     "About": "Sobre",
     "About me": "Sobre mim",
     "Full-stack": "Desenvolvedor",

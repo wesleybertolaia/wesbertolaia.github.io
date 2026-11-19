@@ -76,9 +76,12 @@ window.addEventListener('resize', scheduleFit);
 frame.addEventListener('load', watchDemo);
 if (frame.contentDocument?.readyState === 'complete') watchDemo();
 
+const notes = document.querySelectorAll("[data-project-note]");
+
 function select(card, focusPreview = false) {
   if (card !== active) {
     active = card;
+    for (const note of notes) note.hidden = note.dataset.projectNote !== card.dataset.project;
     for (const item of cards) item.setAttribute('aria-pressed', String(item === card));
     const name = card.querySelector('strong').textContent;
     title.textContent = t(name + ' live demo');

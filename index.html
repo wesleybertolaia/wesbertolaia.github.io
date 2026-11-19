@@ -6,9 +6,9 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Web Design & Frontend</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=profile">
-  <script src="./locale.js?v=profile"></script>
-  <script src="./preview.js?v=profile" defer></script>
+  <link rel="stylesheet" href="./style.css?v=project-notes">
+  <script src="./locale.js?v=project-notes"></script>
+  <script src="./preview.js?v=project-notes" defer></script>
   <link rel="stylesheet" href="./locale.css">
 </head>
 <body>
@@ -20,7 +20,6 @@
     <nav aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#demos">Projects</a>
-      <a href="./case-studies.html">Case studies</a>
       <a href="https://github.com/wesleybertolaia/">GitHub</a>
     <span data-language-menu></span></nav>
   </header>
@@ -72,6 +71,23 @@
         </header>
         <iframe id="demo-frame" title="CarePath live demo" src="https://wesleybertolaia.github.io/carepath/"></iframe>
       </section>
+      <aside class="project-notes" aria-labelledby="project-notes-title">
+        <h2 id="project-notes-title">Case study</h2>
+        <div aria-live="polite">
+          <dl data-project-note="carepath">
+            <dt>Problem tackled</dt><dd>Patients may hesitate to start when they don’t know what happens next.</dd>
+            <dt>What I’d measure</dt><dd>Intake completion per visit: guided entry vs. direct entry.</dd>
+          </dl>
+          <dl data-project-note="dentaldesk" hidden>
+            <dt>Problem tackled</dt><dd>Patients are asked for details before they know if an appointment time works for them.</dd>
+            <dt>What I’d measure</dt><dd>Booking requests per visit: show available times first vs. lead with the request.</dd>
+          </dl>
+          <dl data-project-note="shiftledger" hidden>
+            <dt>Problem tackled</dt><dd>New employees can get stuck logging their first shift, especially when entering breaks.</dd>
+            <dt>What I’d measure</dt><dd>Valid first shifts per new user: editable example vs. blank form.</dd>
+          </dl>
+        </div>
+      </aside>
     </section>
   </main>
 </body>
