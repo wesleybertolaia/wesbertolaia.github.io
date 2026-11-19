@@ -166,7 +166,15 @@
     const name = node('h3');
     const cost = node('p', undefined, 'service-price');
     const amount = node('strong');
-    const unit = node('span');
+    const unit = node('span', undefined, 'service-unit');
+    const unitText = document.createTextNode('');
+    unit.append(unitText);
+    if (index === 1) {
+      const toys = node('span', undefined, 'price-toys');
+      toys.setAttribute('aria-hidden', 'true');
+      toys.append(node('span', undefined, 'price-toy toy-ball'), node('span', undefined, 'price-toy toy-yarn'));
+      unit.prepend(toys);
+    }
     cost.append(amount, unit);
     heading.append(name, cost);
     const description = node('p', undefined, 'service-description');
@@ -200,7 +208,7 @@
     });
     card.append(heading, description, button);
     list.append(card);
-    return { card, name, amount, unit, description, label };
+    return { card, name, amount, unitText, cost, description, label };
   });
 
   function renderServices(animate = false) {
@@ -213,7 +221,8 @@
       fields.name.textContent = t(name);
       fields.description.textContent = t(description);
       fields.amount.textContent = money(rate);
-      fields.unit.textContent = t(unit);
+      fields.unitText.nodeValue = t(unit);
+      fields.cost.dataset.pet = species;
       fields.label.nodeValue = t(bookingActions[index]);
       fields.card.classList.toggle('service-stay', unit === 'per night');
       if (animate && !reducedMotion.matches) {
