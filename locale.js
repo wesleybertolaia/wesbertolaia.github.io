@@ -1,8 +1,11 @@
 (() => {
   const messages = {
+    "Wesley Bertolaia | About me": "Wesley Bertolaia | Sobre mim",
+    "About Wesley Bertolaia: professional experience and technical skills.": "Sobre Wesley Bertolaia: experiência profissional e conhecimentos técnicos.",
+    "Wesley Bertolaia’s web design portfolio. Explore live projects in consultation intake, patient booking, and team timesheets.": "Portfólio de design web de Wesley Bertolaia. Explore projetos de solicitação de consultas, agendamento e controle de jornada.",
     "Selected work": "Projetos selecionados",
-    "Making the next step in care": "Para deixar o próximo passo no atendimento",
-    "clearer.": "mais claro.",
+    "Web design for": "Design web para",
+    "clear next steps.": "simplificar o próximo passo.",
     "I design, build, and ship web experiences. These projects explore how clearer offers and better onboarding can help people decide what to do next.": "Desenho, desenvolvo e publico experiências web. Estes projetos exploram como ofertas mais claras e fluxos iniciais melhores ajudam as pessoas a decidir o próximo passo.",
     "Explore the live work": "Veja os projetos no ar",
     "Team timesheets · React": "Controle de jornada · React",

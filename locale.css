@@ -60,3 +60,10 @@ header nav:has(> [data-language-menu]) { display: flex; flex-wrap: wrap; align-i
   .masthead .language-toggle button { width: 34px; height: 34px; }
   .masthead .language-toggle svg { width: 19px; }
 }
+
+.masthead .site-name { text-decoration: none; }
+.profile-bio h1 { margin-top: 0; }
+@media (max-width: 520px) {
+  .masthead { grid-template-columns: minmax(0, 1fr); }
+  .masthead nav:has(> [data-language-menu]) { justify-self: end; grid-row: 1; }
+}
