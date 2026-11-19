@@ -95,23 +95,23 @@ h1 em { color: var(--burnt-orange); }
   inherits: true;
   initial-value: 0;
 }
-.portrait::before {
+.portrait::after {
+  --artwork: url("./pawday-paw.webp?v=soft-focus");
+  --blur-weight: calc(var(--pet-focus, 0) * .68);
   content: "";
   position: absolute;
-  --blur-bleed: 18px;
-  inset: calc(-1 * var(--blur-bleed));
-  background: url("./pawday-paw.webp?v=soft-focus") center / calc(100% - 2 * var(--blur-bleed)) auto no-repeat;
-  filter: blur(clamp(2.75px, .95vw, 5.5px));
-  mask-image: linear-gradient(90deg,
-    rgb(0 0 0 / calc(.5 - var(--pet-focus, 0))) 26%,
-    transparent 48% 52%,
-    rgb(0 0 0 / calc(.5 + var(--pet-focus, 0))) 75%);
-}
-.portrait-base {
-  mask-image: linear-gradient(90deg,
-    rgb(0 0 0 / calc(.56 + var(--pet-focus, 0))) 26%,
-    #000 48% 52%,
-    rgb(0 0 0 / calc(.56 - var(--pet-focus, 0))) 75%);
+  inset: 0;
+  pointer-events: none;
+  background: var(--artwork) center / contain no-repeat;
+  filter: blur(clamp(1px, .38vw, 2.2px));
+  mask-image: var(--artwork), linear-gradient(90deg,
+    rgb(0 0 0 / calc(.3 - var(--blur-weight))) 26%,
+    transparent 46% 54%,
+    rgb(0 0 0 / calc(.3 + var(--blur-weight))) 75%);
+  mask-position: center;
+  mask-size: contain, 100% 100%;
+  mask-repeat: no-repeat;
+  mask-composite: intersect;
 }
 .portrait[data-pet="cat"] { --pet-focus: .44; rotate: -2deg; }
 .portrait[data-pet="dog"] { --pet-focus: -.44; rotate: 2deg; }
