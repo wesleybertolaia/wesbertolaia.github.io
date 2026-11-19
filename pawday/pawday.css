@@ -67,8 +67,18 @@ h1 em { color: var(--teal); }
 .secondary-link,.panel-back { display: inline-flex; align-items: center; min-height: 44px; color: var(--teal); }
 .panel-back { margin-bottom: .25rem; }
 #services > .panel-back { display: none; }
-[data-view="booking"] :is(.hero,#services),
-[data-view="bookings"] :is(.hero,#services) { display: none; }
+.landing-dialog {
+  width: min(780px, calc(100% - 1rem));
+  max-height: calc(100dvh - 1rem);
+  padding: .55rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: inherit;
+  background: var(--paper);
+  box-shadow: 0 16px 48px #17353325;
+}
+.landing-dialog::backdrop { background: #17353377; }
+.landing-dialog .booking { margin: 0; }
 .portrait {
   align-self: center;
   justify-self: center;
@@ -99,8 +109,6 @@ header .language-toggle button { padding: .35rem; min-width: 44px; }
 header .language-toggle svg { display: block; width: 23px; }
 header .language-toggle button[aria-pressed=true] { background: #dcf6f1; border-color: var(--teal); }
 @media (max-width: 664px), (max-height: 399px) {
-  [data-view="home"] #services,
-  [data-view="services"] .hero { display: none; }
   #services > .panel-back { display: inline-flex; }
 }
 @media (max-width: 664px) {

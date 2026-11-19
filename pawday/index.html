@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Pawday daycare, boarding and grooming for dogs and cats.">
   <title>Pawday | Daycare, boarding & grooming</title>
-  <link rel="stylesheet" href="./pawday.css?v=one-screen">
+  <link rel="stylesheet" href="./pawday.css?v=landing">
   <script src="../locale.js?v=pawday-screen" defer></script>
-  <script src="./pawday.js?v=one-screen" defer></script>
+  <script src="./pawday.js?v=landing" defer></script>
 </head>
-<body data-view="home">
+<body>
   <header class="wrap top"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"></span> Pawday</a><nav><a href="#services">Services</a><a href="#bookings">Bookings</a><span data-language-menu></span></nav></header>
   <main class="wrap">
     <section class="hero" aria-labelledby="headline">
@@ -20,12 +20,13 @@
           <a class="button" href="#services">Find pet care <span aria-hidden="true">↗</span></a>
           <a class="secondary-link" href="#bookings">Your bookings</a>
         </div>
-        <a class="button preview-launch" href="./#services" target="_blank" rel="noopener">Find pet care</a>
+        <a class="button preview-launch" href="#services">Find pet care</a>
       </div>
       <figure class="portrait" aria-hidden="true">
         <img src="./pawday-paw.webp" alt="" width="840" height="840" fetchpriority="high">
       </figure>
     </section>
+    <div id="service-placement"></div>
     <section id="services" aria-labelledby="services-title">
       <a class="panel-back" href="#home">Back to Pawday</a>
       <div class="section-head"><h2 id="services-title" tabindex="-1">What does your pet need?</h2>
@@ -33,6 +34,9 @@
       </div>
       <div class="services" id="service-list"></div>
     </section>
+  </main>
+  <dialog id="booking-dialog" class="landing-dialog" aria-labelledby="booking-title">
+    <div id="service-dialog-slot"></div>
     <section class="booking" id="booking" hidden aria-labelledby="booking-title">
       <a class="panel-back" href="#services">Back to services</a>
       <h2 id="booking-title" tabindex="-1">Plan a visit</h2>
@@ -59,6 +63,6 @@
       </div>
       <p class="booking-disclosure">Practice bookings stay on this device.</p>
     </section>
-  </main>
+  </dialog>
 </body>
 </html>

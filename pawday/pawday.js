@@ -49,37 +49,50 @@
     element.focus({ preventScroll: true });
   }
 
-  function display(view, focusHeading = true) {
-    document.body.dataset.view = view;
-    booking.hidden = view !== 'booking';
-    bookings.hidden = view !== 'bookings';
-    if (focusHeading) {
-      const headings = { home: 'headline', services: 'services-title', booking: 'booking-title', bookings: 'bookings-title' };
-      show(get(headings[view]));
-    }
-  }
+  const dialog = get('booking-dialog');
+  const services = get('services');
+  const compact = matchMedia('(max-width: 664px), (max-height: 399px)');
+  let currentPanel = 'home';
 
-  function readView(focusHeading = true) {
-    const view = location.hash.slice(1);
-    if (view === 'booking' && pet.options.length) display(view, focusHeading);
-    else if (view === 'services' || view === 'booking') display('services', focusHeading);
-    else display(view === 'bookings' ? view : 'home', focusHeading);
+  function placeServices() {
+    if (compact.matches) get('service-dialog-slot').append(services);
+    else get('service-placement').after(services);
+    services.hidden = compact.matches && currentPanel !== 'services';
   }
 
   function navigate(view) {
-    const hash = '#' + view;
-    if (location.hash !== hash) history.pushState(null, '', hash);
-    display(view);
+    currentPanel = view;
+    const panelHeading = { home: 'headline', services: 'services-title', booking: 'booking-title', bookings: 'bookings-title' }[view];
+    placeServices();
+    booking.hidden = view !== 'booking';
+    bookings.hidden = view !== 'bookings';
+    const showDialog = view === 'booking' || view === 'bookings' || (view === 'services' && compact.matches);
+    if (showDialog) {
+      dialog.setAttribute('aria-labelledby', panelHeading);
+      if (!dialog.open) dialog.showModal();
+    } else if (dialog.open) {
+      dialog.close();
+    }
+    show(get(panelHeading));
   }
 
+  dialog.addEventListener('close', () => {
+    if (dialog.open) return;
+    currentPanel = 'home';
+    placeServices();
+  });
+  compact.addEventListener('change', () => {
+    if (dialog.open && currentPanel === 'services') navigate('services');
+    else placeServices();
+  });
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#"]');
     if (!link || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const view = link.hash.slice(1);
+    if (!['home', 'services', 'bookings'].includes(view)) return;
     event.preventDefault();
-    navigate(link.hash.slice(1));
+    navigate(view);
   });
-  window.addEventListener('popstate', () => readView());
-  window.addEventListener('hashchange', () => readView());
 
   function dayLabel(value) {
     return new Intl.DateTimeFormat(window.siteLocale.language, {
@@ -236,14 +249,15 @@
     draft = undefined;
     recordIndex = 0;
     save('Sample booking confirmed.');
-    history.replaceState(null, '', '#bookings');
-    display('bookings');
+    navigate('bookings');
   });
 
   document.body.toggleAttribute('data-embedded', window.self !== window.top);
   renderServices();
   renderHistory();
-  readView(false);
+  placeServices();
+  if (location.hash === '#bookings') navigate('bookings');
+  if (location.hash === '#services') navigate('services');
   document.addEventListener('portfolio-language-change', () => {
     renderServices();
     if (!booking.hidden) renderSummary();
