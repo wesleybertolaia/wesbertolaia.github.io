@@ -2,7 +2,11 @@
   const messages = {
     "About": "Sobre",
     "About me": "Sobre mim",
-    "I’m a software developer who enjoys making everyday tasks easier to do on the web. I like taking an idea from the first sketch to something you can actually use.": "Sou desenvolvedor de software e gosto de simplificar tarefas do dia a dia na web. Gosto de levar uma ideia do primeiro esboço até algo que você possa usar de verdade.",
+    "I build things for the web.": "Crio coisas para a web.",
+    "Try them out.": "Experimente.",
+    "Software developer": "Desenvolvedor de software",
+    "I like the moment a sketch becomes something you can click. My projects start with everyday tasks and explore how a website could make them easier.": "Gosto do momento em que um esboço vira algo que dá para clicar. Meus projetos partem de tarefas do dia a dia e exploram como um site pode facilitá-las.",
+    "Explore projects": "Explore os projetos",
     "Language": "Idioma",
     "Portfolio": "Portfólio",
     "Main navigation": "Navegação principal",
