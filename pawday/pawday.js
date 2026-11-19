@@ -149,43 +149,65 @@
       .map(value => String(value).padStart(2, '0')).join('-');
   }
 
-  function renderServices() {
+  const serviceCards = bookingActions.map((_, index) => {
+    const card = node('article', undefined, 'service');
+    const heading = node('header', undefined, 'service-heading');
+    const name = node('h3');
+    const cost = node('p', undefined, 'service-price');
+    const amount = node('strong');
+    const unit = node('span');
+    cost.append(amount, unit);
+    heading.append(name, cost);
+    const description = node('p', undefined, 'service-description');
+    const button = node('button', undefined, 'service-action');
+    const label = document.createTextNode('');
+    const arrow = node('span', '↗');
+    arrow.setAttribute('aria-hidden', 'true');
+    button.append(label, arrow);
+    button.type = 'button';
+    button.addEventListener('click', () => {
+      serviceIndex = index;
+      draft = undefined;
+      form.reset();
+      pet.replaceChildren(...pets[species].map(name => node('option', name)));
+      start.min = localToday();
+      end.min = start.min;
+      const overnight = overnightStay();
+      end.required = overnight;
+      end.disabled = get('end-label').hidden = !overnight;
+      time.disabled = get('time-label').hidden = overnight;
+      form.hidden = false;
+      review.hidden = true;
+      get('booking-error').textContent = '';
+      renderSummary();
+      renderEstimate();
+      navigate('booking', card.getBoundingClientRect());
+    });
+    card.append(heading, description, button);
+    list.append(card);
+    return { card, name, amount, unit, description, label };
+  });
+
+  function renderServices(animate = false) {
     for (const button of document.querySelectorAll('[data-species]')) {
       button.setAttribute('aria-pressed', String(button.dataset.species === species));
     }
-    list.replaceChildren(...catalog[species].map((entry, index) => {
-      const [name, description, rate, unit] = entry;
-      const card = node('article', undefined, 'service');
-      const heading = node('header', undefined, 'service-heading');
-      const cost = node('p', undefined, 'service-price');
-      cost.append(node('strong', money(rate)), node('span', t(unit)));
-      heading.append(node('h3', t(name)), cost);
-      if (unit === 'per night') card.classList.add('service-stay');
-      const button = node('button', t(bookingActions[index]), 'service-action');
-      button.append(node('span', '↗'));
-      button.lastElementChild.setAttribute('aria-hidden', 'true');
-      button.type = 'button';
-      button.addEventListener('click', () => {
-        serviceIndex = index;
-        draft = undefined;
-        form.reset();
-        pet.replaceChildren(...pets[species].map(name => node('option', name)));
-        start.min = localToday();
-        end.min = start.min;
-        const overnight = entry[3] === 'per night';
-        end.required = overnight;
-        end.disabled = get('end-label').hidden = !overnight;
-        time.disabled = get('time-label').hidden = overnight;
-        form.hidden = false;
-        review.hidden = true;
-        get('booking-error').textContent = '';
-        renderSummary();
-        renderEstimate();
-        navigate('booking', card.getBoundingClientRect());
-      });
-      card.append(heading, node('p', t(description), 'service-description'), button);
-      return card;
-    }));
+    serviceCards.forEach((fields, index) => {
+      const [name, description, rate, unit] = catalog[species][index];
+      fields.name.textContent = t(name);
+      fields.description.textContent = t(description);
+      fields.amount.textContent = money(rate);
+      fields.unit.textContent = t(unit);
+      fields.label.nodeValue = t(bookingActions[index]);
+      fields.card.classList.toggle('service-stay', unit === 'per night');
+      if (animate && !reducedMotion.matches) {
+        for (const element of [fields.description, fields.amount]) {
+          const opacity = Number(getComputedStyle(element).opacity);
+          element.getAnimations().forEach(animation => animation.cancel());
+          element.animate([{ opacity: Math.min(.84, opacity) }, { opacity: 1 }], { duration: 230, easing: 'ease-out' });
+        }
+      }
+    });
   }
 
   function renderSummary() {
@@ -259,13 +281,7 @@
       document.querySelector('.portrait').dataset.pet = species;
       draft = undefined;
       pet.replaceChildren();
-      renderServices();
-      if (!reducedMotion.matches) {
-        [...list.children].forEach((card, index) => card.animate(
-          [{ transform: 'translateY(9px) scale(.98)', opacity: .35 }, { transform: 'none', opacity: 1 }],
-          { duration: 380, delay: index * 65, easing: 'cubic-bezier(.2,.75,.23,1)', fill: 'backwards' },
-        ));
-      }
+      renderServices(true);
     });
   }
 

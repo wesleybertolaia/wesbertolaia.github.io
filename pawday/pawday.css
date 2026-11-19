@@ -87,12 +87,19 @@ h1 em { color: var(--burnt-orange); }
   width: min(92%, 460px, 52svh);
 }
 .portrait img { display: block; width: 100%; height: auto; }
-.portrait-cats,.portrait-dogs { position: absolute; inset: 0; opacity: 0; }
-.portrait-cats { clip-path: polygon(0 0, 49% 0, 49% 38%, 33% 42%, 33% 60%, 0 63%); }
-.portrait-dogs { clip-path: polygon(49% 0, 100% 0, 100% 100%, 0 100%, 0 63%, 33% 60%, 33% 42%, 49% 38%); }
-.portrait[data-pet] .portrait-base { opacity: .42; }
-.portrait[data-pet="cat"] .portrait-cats { opacity: 1; transform: translate(-4%, -3%) rotate(-5deg) scale(1.08); }
-.portrait[data-pet="dog"] .portrait-dogs { opacity: 1; transform: translate(2%, 1%) rotate(3deg) scale(1.04); }
+@property --pet-focus {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+.portrait-base {
+  mask-image: linear-gradient(90deg,
+    rgb(0 0 0 / calc(.79 + var(--pet-focus, 0))) 25%,
+    #000 49% 54%,
+    rgb(0 0 0 / calc(.79 - var(--pet-focus, 0))) 85%);
+}
+.portrait[data-pet="cat"] .portrait-base { --pet-focus: .21; transform: rotate(-2deg); }
+.portrait[data-pet="dog"] .portrait-base { --pet-focus: -.21; transform: rotate(2deg); }
 @media (min-width: 665px) and (min-height: 400px) {
   .hero-actions > .button { display: none; }
 }
@@ -223,7 +230,8 @@ header .language-toggle button[aria-pressed=true] { background: #ffead0; border-
 #review .actions { justify-content: flex-start; margin-top: .75rem; }
 @media (prefers-reduced-motion: no-preference) {
   .portrait { animation: settle-in .75s ease-out both; }
-  .portrait img { transition: opacity .55s ease, transform .6s cubic-bezier(.28,.78,.2,1); }
+  .portrait-base { transition: --pet-focus .42s ease, transform .46s cubic-bezier(.28,.78,.2,1); }
+  .species button { transition: background-color .2s ease, border-color .2s ease; }
   .landing-dialog[open]::backdrop { animation: settle-in .35s ease both; }
   .service-action { transition: background-color .18s ease, color .18s ease; }
   @keyframes settle-in { from { opacity: .55; } }
