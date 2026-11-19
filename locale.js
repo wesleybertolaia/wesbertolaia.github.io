@@ -1,11 +1,13 @@
 (() => {
   const messages = {
-    "Patients may hesitate to start when they don’t know what happens next.": "Pacientes podem hesitar em começar quando não sabem o que acontece depois.",
-    "Intake completion per visit: guided entry vs. direct entry.": "Formulários concluídos por visita: entrada guiada versus direta.",
-    "Patients are asked for details before they know if an appointment time works for them.": "Pacientes precisam informar seus dados antes de saber se há um horário que funciona para eles.",
-    "Booking requests per visit: show available times first vs. lead with the request.": "Solicitações de agendamento por visita: mostrar horários primeiro versus começar pela solicitação.",
-    "New employees can get stuck logging their first shift, especially when entering breaks.": "Novos funcionários podem ter dificuldades no primeiro registro de jornada, especialmente ao informar intervalos.",
-    "Valid first shifts per new user: editable example vs. blank form.": "Primeiros registros válidos por novo usuário: exemplo editável versus formulário em branco.",
+    "Starting an online consultation can feel like a commitment. CarePath explains what happens next before asking patients to start the intake.": "Iniciar uma consulta online pode parecer um compromisso. O CarePath explica o que acontece depois antes de pedir que o paciente inicie o formulário.",
+    "Compare guided and direct entry on completed intakes per landing session. Check where people leave to see whether the guidance helps or adds friction.": "Comparar a entrada guiada e a direta por formulários concluídos por sessão. Observar em que etapa as pessoas saem para saber se a orientação ajuda ou dificulta.",
+    "Asking for details before showing availability gives patients little reason to continue. DentalDesk shows sample times before they submit a request.": "Pedir dados antes de mostrar a disponibilidade reduz o incentivo para continuar. O DentalDesk mostra horários de exemplo antes do envio da solicitação.",
+    "Test a times-first headline against a request-first headline. Compare submitted requests per landing session, then check whether more requests become confirmed visits.": "Testar um título que destaca os horários contra um que destaca a solicitação. Comparar solicitações enviadas por sessão e verificar se mais pedidos viram consultas confirmadas.",
+    "Breaks can make a first shift entry confusing. ShiftLedger offers an editable example so employees can see how the hours add up before saving.": "Os intervalos podem dificultar o primeiro registro de jornada. O ShiftLedger oferece um exemplo editável para que o funcionário veja como as horas são calculadas antes de salvar.",
+    "Compare first valid saves per new user with an editable example versus a blank form. Check for accidental saves of unchanged sample hours.": "Comparar primeiros registros válidos por novo usuário com um exemplo editável e um formulário em branco. Verificar se alguém salva os horários de exemplo por engano.",
+    "May 2023 – Oct 2026": "Mai 2023 – Out 2026",
+
     "Problem tackled": "Problema abordado",
 
     "About": "Sobre",
