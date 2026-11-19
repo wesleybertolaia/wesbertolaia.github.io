@@ -1,5 +1,15 @@
 (() => {
   const messages = {
+    "Both": "Ambos",
+    "Dog & cat care · 10% off": "Cão e gato · 10% de desconto",
+    "Sample cat": "Gato de exemplo",
+    "Sample dog": "Cão de exemplo",
+    "Pets": "Pets",
+    "Regular price": "Preço sem desconto",
+    "Bundle savings": "Desconto do pacote",
+    "A play day for your dog and a separate quiet space for your cat.": "Brincadeiras para seu cão e um espaço tranquilo à parte para seu gato.",
+    "Overnight care for your dog and a private suite for your cat.": "Pernoite para seu cão e uma suíte privativa para seu gato.",
+    "A bath and trim for your dog, plus a brush-out and nail trim for your cat.": "Banho e tosa para seu cão, com escovação e corte de unhas para seu gato.",
     "Book daycare": "Reservar creche",
     "Book a stay": "Reservar estadia",
     "Book grooming": "Agendar banho e tosa",

@@ -13,6 +13,17 @@
       ['Grooming', 'A gentle brush-out and nail trim in a quiet room.', 32, 'per visit'],
     ],
   };
+  const bundleDescriptions = [
+    'A play day for your dog and a separate quiet space for your cat.',
+    'Overnight care for your dog and a private suite for your cat.',
+    'A bath and trim for your dog, plus a brush-out and nail trim for your cat.',
+  ];
+  const bundleDiscount = .10;
+  const roundedMoney = amount => Math.round(amount * 100) / 100;
+  catalog.both = catalog.dog.map(([name, , rate, unit], index) => {
+    const regularRate = rate + catalog.cat[index][2];
+    return [name, bundleDescriptions[index], roundedMoney(regularRate * (1 - bundleDiscount)), unit, regularRate];
+  });
   const pets = { dog: ['Maple', 'Otis'], cat: ['Juniper', 'Mochi'] };
   const list = get('service-list');
   const booking = get('booking');
@@ -20,7 +31,7 @@
   const review = get('review');
   const bookings = get('bookings');
   const confirm = get('confirm');
-  const { pet, start, end, time } = form.elements;
+  const { pet, companion, start, end, time } = form.elements;
   const key = 'pawday.bookings.v1';
   let species = 'dog';
   let serviceIndex = 0;
@@ -41,7 +52,7 @@
 
   const service = () => catalog[species][serviceIndex];
   const money = amount => new Intl.NumberFormat(window.siteLocale.language, {
-    style: 'currency', currency: 'USD', maximumFractionDigits: 0,
+    style: 'currency', currency: 'USD', minimumFractionDigits: Number.isInteger(amount) ? 0 : 2, maximumFractionDigits: 2,
   }).format(amount);
   const price = ([, , rate, unit]) => money(rate) + ' / ' + t(unit);
   const bookingActions = ['Book daycare', 'Book a stay', 'Book grooming'];
@@ -63,7 +74,7 @@
     const nights = countNights();
     const valid = start.value >= localToday() && Number.isInteger(nights) && nights > 0;
     get('stay-rate').textContent = valid ? stayRate(nights) : price(service());
-    get('stay-total').textContent = valid ? money(nights * service()[2]) : t('Choose both dates');
+    get('stay-total').textContent = valid ? money(roundedMoney(nights * service()[2])) : t('Choose both dates');
   }
 
   function show(element) {
@@ -169,7 +180,11 @@
       serviceIndex = index;
       draft = undefined;
       form.reset();
-      pet.replaceChildren(...pets[species].map(name => node('option', name)));
+      const bundled = species === 'both';
+      pet.replaceChildren(...pets[bundled ? 'dog' : species].map(name => node('option', name)));
+      companion.replaceChildren(...pets.cat.map(name => node('option', name)));
+      companion.disabled = get('companion-field').hidden = !bundled;
+      form.toggleAttribute('data-bundle', bundled);
       start.min = localToday();
       end.min = start.min;
       const overnight = overnightStay();
@@ -192,6 +207,7 @@
     for (const button of document.querySelectorAll('[data-species]')) {
       button.setAttribute('aria-pressed', String(button.dataset.species === species));
     }
+    get('services-title').textContent = t(species === 'both' ? 'Dog & cat care · 10% off' : 'What does your pet need?');
     serviceCards.forEach((fields, index) => {
       const [name, description, rate, unit] = catalog[species][index];
       fields.name.textContent = t(name);
@@ -212,15 +228,20 @@
 
   function renderSummary() {
     const overnight = overnightStay();
+    get('primary-pet-label').textContent = t(species === 'both' ? 'Sample dog' : 'Sample pet');
     get('arrival-label').textContent = t(overnight ? 'Check-in date' : 'Start date');
     get('booking-title').textContent = t(overnight ? 'Book an overnight stay' : 'Plan a visit');
     get('service-summary').textContent = overnight ? t(service()[1]) : t(service()[0]) + ' · ' + price(service());
   }
 
   function renderReview() {
-    const fields = [['Pet', draft.pet], ['Service', t(draft.name)],
+    const fields = [[draft.savings ? 'Pets' : 'Pet', draft.pet], ['Service', t(draft.name)],
       ['Visit', dateRange(draft)]];
     if (draft.end) fields.push(['Nightly rate', stayRate(countNights())]);
+    if (draft.savings) {
+      fields.push(['Regular price', money(roundedMoney(draft.total + draft.savings))],
+        ['Bundle savings', '−' + money(draft.savings)]);
+    }
     fields.push(['Total', money(draft.total)]);
     get('review-details').replaceChildren(...fields.flatMap(([label, value]) =>
       [node('dt', t(label)), node('dd', value)]));
@@ -297,7 +318,7 @@
 
   form.addEventListener('submit', event => {
     event.preventDefault();
-    const [name, , rate, unit] = service();
+    const [name, , rate, unit, regularRate] = service();
     const overnight = unit === 'per night';
     const nights = overnight ? countNights() : 1;
     if (start.value < localToday() || !Number.isInteger(nights) || nights < 1) {
@@ -306,8 +327,12 @@
       return;
     }
     get('booking-error').textContent = '';
-    draft = { name, pet: pet.value, start: start.value, end: overnight ? end.value : '',
-      time: time.value, total: rate * nights };
+    draft = {
+      name, pet: companion.disabled ? pet.value : pet.value + ' & ' + companion.value,
+      start: start.value, end: overnight ? end.value : '', time: time.value,
+      total: roundedMoney(rate * nights),
+      savings: regularRate ? roundedMoney((regularRate - rate) * nights) : 0,
+    };
     renderReview();
     form.hidden = true;
     review.hidden = false;

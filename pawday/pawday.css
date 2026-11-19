@@ -114,16 +114,16 @@ h1 em { color: var(--burnt-orange); }
 }
 .portrait::before {
   clip-path: polygon(0 0, var(--cat-edge), 0 64%);
-  transform-origin: 25% 34%;
+  transform-origin: 45% 58%;
+  transform: scale(1);
 }
 .portrait::after {
   clip-path: polygon(var(--dog-edge), 100% 0, 100% 64%);
-  transform-origin: 75% 34%;
+  transform-origin: 55% 58%;
+  transform: scale(1);
 }
-.portrait[data-pet="cat"]::before { scale: 1.07; translate: -1% -1%; }
-.portrait[data-pet="cat"]::after { scale: .94; }
-.portrait[data-pet="dog"]::before { scale: .94; }
-.portrait[data-pet="dog"]::after { scale: 1.07; translate: 1% -1%; }
+.portrait[data-pet="cat"]::before,.portrait[data-pet="dog"]::after { transform: scale(1.045); }
+.portrait[data-pet="cat"]::after,.portrait[data-pet="dog"]::before { transform: scale(.955); }
 @media (min-width: 665px) and (min-height: 400px) {
   .hero-actions > .button { display: none; }
 }
@@ -133,7 +133,7 @@ h1 em { color: var(--burnt-orange); }
 #service-dialog-slot .section-head .species { display: flex; }
 #services { padding: .75rem 0; }
 .section-head h2,h2 { font: 600 clamp(1.45rem,3vw,2.15rem)/1.1 Georgia,serif; letter-spacing: -.03em; }
-.species { display: flex; gap: .3rem; }
+.species { display: flex; flex-wrap: wrap; gap: .3rem; }
 .species button[aria-pressed=true] { background: var(--peach); border-color: var(--burnt-orange); color: var(--ink); }
 .services { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.18fr) minmax(0,1fr); gap: .7rem; margin-top: .75rem; }
 .service {
@@ -194,6 +194,7 @@ h1 em { color: var(--burnt-orange); }
 #visit-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .55rem .75rem; margin-top: .7rem; align-items: end; }
 #visit-form label { display: grid; gap: .2rem; min-width: 0; font-weight: 650; font-size: .875rem; }
 .pet-field,.form-summary,.form-actions,#booking-error { grid-column: 1 / -1; }
+#visit-form[data-bundle] .pet-field { grid-column: auto; }
 .form-summary {
   display: flex;
   justify-content: space-between;
@@ -257,7 +258,7 @@ header .language-toggle button[aria-pressed=true] { background: #ffead0; border-
     animation: settle-in .75s ease-out both;
   }
   .portrait::before,.portrait::after {
-    transition: scale .38s cubic-bezier(.28,.78,.2,1), translate .38s cubic-bezier(.28,.78,.2,1);
+    transition: transform .32s cubic-bezier(.28,.78,.2,1);
   }
   .species button { transition: background-color .2s ease, border-color .2s ease; }
   .landing-dialog[open]::backdrop { animation: settle-in .35s ease both; }
