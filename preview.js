@@ -15,6 +15,12 @@ function watchDemo() {
     return url.origin === doc.location.origin && url.pathname === doc.location.pathname;
   });
   if (isProject) {
+    const embeddedStyle = doc.createElement('style');
+    embeddedStyle.textContent = `
+      html { scrollbar-width: none; }
+      html::-webkit-scrollbar { display: none; }
+    `;
+    doc.head.append(embeddedStyle);
     const header = doc.querySelector('body > header');
     if (header) header.style.display = 'none';
   }
