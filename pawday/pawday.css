@@ -84,46 +84,77 @@ h1 em { color: var(--burnt-orange); }
 .landing-dialog::backdrop { background: #39241677; }
 .landing-dialog .booking { margin: 0; }
 .portrait {
-  --artwork: url("./pawday-paw.webp?v=cat-paws");
-  /* Follow the gaps between the toes and the central portrait. */
-  --cat-edge: 49.25% 0%, 49.25% 28%, 49% 32%, 47.3% 35%, 46% 37%,
-    44% 38%, 41.6% 40%, 36% 42%, 33% 43%, 30.5% 44.5%, 29.5% 46%,
-    30.2% 48%, 29.5% 50%, 28.8% 52%, 28% 54%, 27% 56%, 25.45% 58%,
-    23.45% 60%, 20.5% 62%, 19% 64%;
-  --dog-edge: 76.5% 64%, 76.5% 62%, 74% 60%, 72.25% 58%, 71% 56%,
-    70% 54%, 69% 52%, 68.3% 50%, 67.5% 48%, 66.8% 46%, 65.5% 44%,
-    64% 42%, 56.2% 40%, 55.4% 38%, 53.2% 36%, 51% 33%, 49.25% 28%, 49.25% 0%;
   position: relative;
   align-self: center;
   justify-self: center;
   width: min(92%, 460px, 52svh);
+  aspect-ratio: 1;
+}
+.portrait-pair,.portrait-sticker { display: block; position: absolute; }
+.portrait-pair { inset: 0; transform: scale(1); }
+.portrait-dogs { transform-origin: 44% 58%; }
+.portrait-cats { transform-origin: 56% 58%; }
+.portrait-sticker {
+  background-image: url("./pawday-stickers.webp");
+  background-repeat: no-repeat;
+  aspect-ratio: var(--crop-width) / var(--crop-height);
+  background-size: calc(100% * 960 / var(--crop-width)) calc(100% * 960 / var(--crop-height));
+  background-position: calc(100% * var(--crop-x) / (960 - var(--crop-width)))
+    calc(100% * var(--crop-y) / (960 - var(--crop-height)));
+}
+/* The crop rectangles end in the transparent gutters of the 960 × 960 sprite. */
+.portrait-center {
+  --crop-x: 238;
+  --crop-y: 553;
+  --crop-width: 476;
+  --crop-height: 386;
+  top: 41%;
+  left: 15%;
+  width: 70%;
   transform: scaleX(-1);
 }
-.portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  clip-path: polygon(var(--cat-edge), 0 64%, 0 100%, 100% 100%, 100% 64%, var(--dog-edge));
+.portrait-retriever {
+  --crop-x: 185;
+  --crop-y: 16;
+  --crop-width: 218;
+  --crop-height: 267;
+  top: 4%;
+  left: 20%;
+  width: 27%;
+  rotate: -6deg;
 }
-.portrait::before,.portrait::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: var(--artwork) center / contain no-repeat;
+.portrait-tabby {
+  --crop-x: 553;
+  --crop-y: 16;
+  --crop-width: 217;
+  --crop-height: 267;
+  top: 4%;
+  right: 20%;
+  width: 27%;
+  rotate: 6deg;
 }
-.portrait::before {
-  clip-path: polygon(0 0, var(--cat-edge), 0 64%);
-  transform-origin: 45% 58%;
-  transform: scale(1);
+.portrait-shepherd {
+  --crop-x: 185;
+  --crop-y: 292;
+  --crop-width: 218;
+  --crop-height: 262;
+  top: 29%;
+  left: 1%;
+  width: 25.5%;
+  rotate: -17deg;
 }
-.portrait::after {
-  clip-path: polygon(var(--dog-edge), 100% 0, 100% 64%);
-  transform-origin: 55% 58%;
-  transform: scale(1);
+.portrait-tuxedo {
+  --crop-x: 553;
+  --crop-y: 291;
+  --crop-width: 216;
+  --crop-height: 264;
+  top: 29%;
+  right: 1%;
+  width: 25.5%;
+  rotate: 17deg;
 }
-.portrait[data-pet="cat"]::before,.portrait[data-pet="dog"]::after { transform: scale(1.045); }
-.portrait[data-pet="cat"]::after,.portrait[data-pet="dog"]::before { transform: scale(.955); }
+.portrait[data-pet="cat"] .portrait-cats,.portrait[data-pet="dog"] .portrait-dogs { transform: scale(1.045); }
+.portrait[data-pet="cat"] .portrait-dogs,.portrait[data-pet="dog"] .portrait-cats { transform: scale(.955); }
 @media (min-width: 665px) and (min-height: 400px) {
   .hero-actions > .button { display: none; }
 }
@@ -257,9 +288,7 @@ header .language-toggle button[aria-pressed=true] { background: #ffead0; border-
   .portrait {
     animation: settle-in .75s ease-out both;
   }
-  .portrait::before,.portrait::after {
-    transition: transform .32s cubic-bezier(.28,.78,.2,1);
-  }
+  .portrait-pair { transition: transform .32s cubic-bezier(.28,.78,.2,1); }
   .species button { transition: background-color .2s ease, border-color .2s ease; }
   .landing-dialog[open]::backdrop { animation: settle-in .35s ease both; }
   .service-action { transition: background-color .18s ease, color .18s ease; }

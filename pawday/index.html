@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="PawBuddies daycare, boarding and grooming for dogs and cats.">
   <title>PawBuddies | Daycare, boarding & grooming</title>
-  <link rel="stylesheet" href="./pawday.css?v=cat-paws">
+  <link rel="preload" as="image" type="image/webp" href="./pawday-stickers.webp">
+  <link rel="stylesheet" href="./pawday.css?v=separate-stickers">
   <script src="../locale.js?v=pet-bundle" defer></script>
   <script src="./pawday.js?v=pet-bundle" defer></script>
 </head>
@@ -27,7 +28,15 @@
         <a class="button preview-launch" href="#services">Find pet care</a>
       </div>
       <figure class="portrait" aria-hidden="true">
-        <img class="portrait-base" src="./pawday-paw.webp?v=cat-paws" alt="" width="840" height="840" fetchpriority="high">
+        <span class="portrait-sticker portrait-center"></span>
+        <span class="portrait-pair portrait-dogs">
+          <span class="portrait-sticker portrait-retriever"></span>
+          <span class="portrait-sticker portrait-shepherd"></span>
+        </span>
+        <span class="portrait-pair portrait-cats">
+          <span class="portrait-sticker portrait-tabby"></span>
+          <span class="portrait-sticker portrait-tuxedo"></span>
+        </span>
       </figure>
     </section>
     <div id="service-placement"></div>
