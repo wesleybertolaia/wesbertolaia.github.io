@@ -25,16 +25,23 @@ if (frame.contentDocument?.readyState === 'complete') watchDemo();
 
 const notes = document.querySelectorAll("[data-project-note]");
 
+function updatePreview() {
+  const name = active.querySelector('strong').textContent;
+  title.textContent = t(name + ' live demo');
+  frame.title = title.textContent;
+  const source = localizedUrl(active.dataset.url);
+  if (frame.src !== source) frame.src = source;
+  external.href = source;
+}
+
+document.addEventListener('portfolio-language-change', updatePreview);
+
 function select(card, focusPreview = false) {
   if (card !== active) {
     active = card;
     for (const note of notes) note.hidden = note.dataset.projectNote !== card.dataset.project;
     for (const item of cards) item.setAttribute('aria-pressed', String(item === card));
-    const name = card.querySelector('strong').textContent;
-    title.textContent = t(name + ' live demo');
-    frame.title = title.textContent;
-    frame.src = localizedUrl(card.dataset.url);
-    external.href = localizedUrl(card.dataset.url);
+    updatePreview();
   }
   if (focusPreview) title.focus({ preventScroll: true });
 }
@@ -49,8 +56,5 @@ if (legacyHash === 'work' || cards.some(card => card.dataset.project === legacyH
   const wanted = new URLSearchParams(location.search).get('demo');
   const requested = cards.find(card => card.dataset.project === wanted);
   if (requested && requested !== active) select(requested);
-  else {
-    const source = localizedUrl(active.dataset.url);
-    if (frame.src !== source) frame.src = source;
-  }
+  else updatePreview();
 }

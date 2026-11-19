@@ -80,8 +80,8 @@
   };
   let saved;
   try { saved = supported(localStorage.getItem(key)); } catch { /* Storage can be disabled. */ }
-  const requested = supported(new URLSearchParams(location.search).get('lang'));
-  const language = requested || saved || (navigator.languages || []).map(supported).find(Boolean)
+  let requested = supported(new URLSearchParams(location.search).get('lang'));
+  let language = requested || saved || (navigator.languages || []).map(supported).find(Boolean)
     || supported(navigator.language) || 'en';
   if (requested) {
     try { localStorage.setItem(key, language); } catch { /* The URL still keeps the preference. */ }
@@ -105,23 +105,29 @@
     return plain ? text.replace(plain, t(plain)) : text;
   }
 
+  const originalText = new WeakMap();
+  const originalAttributes = new WeakMap();
+
   function apply(root) {
-    if (language === 'pt-BR') {
-      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-        acceptNode: node => node.parentElement?.closest('script, style')
-          ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
-      });
-      while (walker.nextNode()) {
-        const node = walker.currentNode;
-        const translated = textNode(node.data);
-        if (node.data === translated) continue;
-        if (node.parentElement?.matches('option:not([value])')) node.parentElement.value = node.data.trim();
-        node.data = translated;
-      }
-      for (const item of root.querySelectorAll('[aria-label], [title], [placeholder], meta[name="description"]')) {
-        for (const attribute of ['aria-label', 'title', 'placeholder', 'content']) {
-          if (item.hasAttribute(attribute)) item.setAttribute(attribute, t(item.getAttribute(attribute)));
-        }
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: node => node.parentElement?.closest('script, style')
+        ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
+    });
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (!originalText.has(node)) originalText.set(node, node.data);
+      const translated = textNode(originalText.get(node));
+      if (node.data === translated) continue;
+      if (node.parentElement?.matches('option:not([value])')) node.parentElement.value = node.data.trim();
+      node.data = translated;
+    }
+    for (const item of root.querySelectorAll('[aria-label], [title], [placeholder], meta[name="description"]')) {
+      if (!originalAttributes.has(item)) originalAttributes.set(item, new Map());
+      const values = originalAttributes.get(item);
+      for (const attribute of ['aria-label', 'title', 'placeholder', 'content']) {
+        if (!item.hasAttribute(attribute)) continue;
+        if (!values.has(attribute)) values.set(attribute, item.getAttribute(attribute));
+        item.setAttribute(attribute, t(values.get(attribute)));
       }
     }
     for (const link of root.querySelectorAll('a[href]')) {
@@ -164,13 +170,23 @@
         const project = document.querySelector('.project-card[aria-pressed="true"]')?.dataset.project;
         if (project) next.searchParams.set('demo', project);
         try { localStorage.setItem(key, value); } catch { /* The URL carries the choice. */ }
-        location.assign(next);
+        const previousScroll = window.scrollY;
+        requested = language = value;
+        document.documentElement.lang = language;
+        history.replaceState(history.state, '', next);
+        apply(document);
+        toggle.setAttribute('aria-label', t('Language'));
+        for (const option of toggle.querySelectorAll('button')) {
+          option.setAttribute('aria-pressed', String(option.lang === language));
+        }
+        document.dispatchEvent(new Event('portfolio-language-change'));
+        window.scrollTo({ top: previousScroll, behavior: 'instant' });
       });
       toggle.append(button);
     }
     mount.replaceChildren(toggle);
   }
 
-  window.siteLocale = { language, t, date, url, apply, template };
+  window.siteLocale = { get language() { return language; }, t, date, url, apply, template };
   document.addEventListener('DOMContentLoaded', initialize, { once: true });
 })();
