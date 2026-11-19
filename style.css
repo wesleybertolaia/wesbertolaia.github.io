@@ -307,3 +307,6 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
     gap: clamp(1.25rem, 3.4vw, 4rem);
   }
 }
+
+.site-identity .eyebrow { font-size: clamp(1rem, 1.4vw, 1.55rem); }
+.site-name { font-size: clamp(1.65rem, 2.35vw, 2.7rem); line-height: 1.15; }
