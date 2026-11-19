@@ -3,11 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=/portfolio/">
-  <link rel="canonical" href="https://wesleybertolaia.github.io/portfolio/">
-  <title>Wesley Bertolaia | Portfolio</title>
+  <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
+  <title>Wesley Bertolaia | Web Design & Frontend</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css?v=left-cards">
+  <script src="./locale.js?v=left-cards"></script>
+  <script src="./preview.js?v=left-cards" defer></script>
+  <link rel="stylesheet" href="./locale.css">
 </head>
 <body>
-  <p><a href="/portfolio/">Open the portfolio</a></p>
+  <header class="wrap masthead">
+    <div>
+      <p class="eyebrow">Portfolio</p>
+      <h1>Wesley Bertolaia<span>.</span></h1>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="./case-studies.html">Case studies</a>
+      <a href="https://github.com/wesleybertolaia/">GitHub</a>
+    <span data-language-menu></span></nav>
+  </header>
+  <main class="wrap">
+    <section class="shelf" id="demos" aria-label="Live project demos">
+      <div class="project-list">
+        <h2>Projects</h2>
+        <div class="project-cards">
+          <button class="project-card" type="button" aria-pressed="true" aria-controls="live-preview" data-project="carepath" data-url="https://wesleybertolaia.github.io/carepath/">
+            <span class="project-copy"><strong>CarePath</strong><span>Online consultation funnel</span></span><span class="project-art art-care" aria-hidden="true"></span>
+          </button>
+          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="dentaldesk" data-url="https://wesleybertolaia.github.io/dentaldesk/patient.html">
+            <span class="project-copy"><strong>DentalDesk</strong><span>Patient booking · Angular</span></span><span class="project-art art-dental" aria-hidden="true"></span>
+          </button>
+          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="shiftledger" data-url="https://wesleybertolaia.github.io/shiftledger/">
+            <span class="project-copy"><strong>ShiftLedger</strong><span>Employee onboarding · React</span></span><span class="project-art art-shift" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <section class="preview-panel" id="live-preview" aria-labelledby="preview-title">
+        <header class="preview-bar">
+          <h2 id="preview-title" tabindex="-1" aria-live="polite">CarePath live demo</h2>
+          <a id="open-demo" href="https://wesleybertolaia.github.io/carepath/">Open full site</a>
+        </header>
+        <iframe id="demo-frame" title="CarePath live demo" src="https://wesleybertolaia.github.io/carepath/"></iframe>
+      </section>
+    </section>
+  </main>
 </body>
 </html>

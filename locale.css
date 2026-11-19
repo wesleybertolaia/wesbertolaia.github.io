@@ -1,0 +1,17 @@
+[data-language-menu] { display: inline-flex; align-items: center; }
+[data-language-menu]:empty { display: none; }
+.language-picker {
+  min-height: 44px;
+  min-width: 5.1rem;
+  max-width: 100%;
+  padding: .3rem .45rem;
+  border: 1px solid currentColor;
+  border-radius: .4rem;
+  background: transparent;
+  color: inherit;
+  font: 650 .875rem/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+.language-picker option { color: CanvasText; background: Canvas; }
+header:has(> [data-language-menu]) { flex-wrap: wrap; gap: .45rem .8rem; }
+header nav:has(> [data-language-menu]) { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; }

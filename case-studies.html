@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Three case studies by Wesley Bertolaia in consultation acquisition, patient booking, and employee onboarding.">
+  <title>Case Studies | Wesley Bertolaia</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css?v=balanced">
+  <link rel="stylesheet" href="./locale.css">
+  <script src="./locale.js"></script>
+</head>
+<body>
+  <header class="wrap top">
+    <a class="wordmark" href="./">Wesley Bertolaia</a>
+    <nav aria-label="Main navigation"><a href="./#demos">Projects</a><a href="./case-studies.html" aria-current="page">Case studies</a><a href="https://github.com/wesleybertolaia/">GitHub</a><span data-language-menu></span></nav>
+  </header>
+  <main class="wrap case-page">
+    <h1>Case studies</h1>
+    <div class="case-grid">
+      <article class="case case-care" id="carepath">
+        <header><p class="eyebrow">Healthcare acquisition</p><h2>CarePath</h2></header>
+        <section><h3>Friction</h3><p>Visitors may want to know who reviews their request or what happens before taking the first step.</p></section>
+        <section><h3>What I built</h3><p>One variant starts at intake. The other lets visitors pick a question first. Both reach the same intake preview and log the same start event.</p></section>
+        <section><h3>What I’d measure</h3><p>Intake starts per eligible landing session. Track guided-step drop-off and completed intakes to see whether the guidance helps.</p></section>
+        <div class="links"><a class="button" href="./?demo=carepath#demos">Try the demo</a><a href="https://wesleybertolaia.github.io/carepath/?path=direct">Direct variant</a><a href="https://github.com/wesleybertolaia/carepath">Source</a></div>
+      </article>
+      <article class="case case-dental" id="dentaldesk">
+        <header><p class="eyebrow">Patient booking · Angular</p><h2>DentalDesk</h2></header>
+        <section><h3>Friction</h3><p>Patients may hesitate to share details before seeing available times and knowing when the clinic will confirm.</p></section>
+        <section><h3>What I built</h3><p>A guided request that shows sample times before review. I tested that the visit type and time are kept when a visitor goes back.</p></section>
+        <section><h3>What I’d measure</h3><p>Submitted requests per eligible session for a request-first offer versus a time-first offer. Check confirmed visits as a follow-up.</p></section>
+        <div class="links"><a class="button" href="./?demo=dentaldesk#demos">Try the demo</a><a href="https://wesleybertolaia.github.io/dentaldesk/patient.html?offer=times">Offer variant</a><a href="https://github.com/wesleybertolaia/dentaldesk">Source</a></div>
+      </article>
+      <article class="case case-shift" id="shiftledger">
+        <header><p class="eyebrow">Employee onboarding · React</p><h2>ShiftLedger</h2></header>
+        <section><h3>Friction</h3><p>New employees may be unsure how to log breaks. Managers need a clear view of recorded time.</p></section>
+        <section><h3>What I built</h3><p>A first-shift form with editable examples and validation. In a browser test, saving the example moved the manager total from 24h 30m to 26h.</p></section>
+        <section><h3>What I’d measure</h3><p>Valid first saves per new employee session. Check time to save, errors, and accidental acceptance of the example.</p></section>
+        <div class="links"><a class="button" href="./?demo=shiftledger#demos">Try the demo</a><a href="https://github.com/wesleybertolaia/shiftledger">Source</a></div>
+      </article>
+    </div>
+    <p class="evidence">These prototypes use sample data. Conversion tests are proposed.</p>
+  </main>
+</body>
+</html>
