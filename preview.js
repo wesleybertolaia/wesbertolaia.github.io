@@ -74,7 +74,7 @@ function showLoaded(preview) {
   preview.frame.classList.add('is-visible');
   displayed = preview;
   pending = undefined;
-  title.textContent = preview.frame.title;
+  title.textContent = preview.name;
   setStatus();
 }
 
@@ -124,7 +124,7 @@ function updatePreview() {
   const dimensions = frameDimensions();
   frame.style.width = dimensions.width + 'px';
   frame.style.height = dimensions.height + 'px';
-  const preview = { frame, source, fitRequest: 0 };
+  const preview = { frame, name, source, fitRequest: 0 };
   pending = preview;
   setStatus(t('Loading {project}…').replace('{project}', name));
   frame.addEventListener('load', () => pageLoaded(preview));
