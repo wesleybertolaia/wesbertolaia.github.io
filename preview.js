@@ -13,7 +13,10 @@ let pending;
 
 function frameDimensions() {
   const width = Math.max(canvasMinWidth, viewport.clientWidth);
-  return { width, height: Math.ceil(width * 9 / 16) };
+  const scale = viewport.clientWidth / width;
+  const aspectHeight = width * 9 / 16;
+  const availableHeight = scale && viewport.clientHeight ? viewport.clientHeight / scale : aspectHeight;
+  return { width, height: Math.floor(Math.min(aspectHeight, availableHeight)) };
 }
 
 function fitPreview(preview) {
@@ -85,6 +88,7 @@ function pageLoaded(preview) {
   const embeddedStyle = doc.createElement('style');
   embeddedStyle.textContent = 'html { overflow: hidden; scrollbar-width: none; }';
   doc.head.append(embeddedStyle);
+  doc.documentElement.toggleAttribute('data-portfolio-preview', true);
   const header = doc.querySelector('body > header');
   if (header) header.style.display = 'none';
 
