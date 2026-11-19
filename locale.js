@@ -166,8 +166,7 @@
         if (language === value) return;
         const next = new URL(location.href);
         next.searchParams.set('lang', value);
-        const project = document.querySelector('.project-card[aria-pressed="true"]')?.dataset.project;
-        if (project) next.searchParams.set('demo', project);
+        next.searchParams.delete('demo');
         try { localStorage.setItem(key, value); } catch { /* The URL carries the choice. */ }
         const previousScroll = window.scrollY;
         requested = language = value;
