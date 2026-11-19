@@ -43,3 +43,7 @@ details p { max-width: 68ch; margin-top: .5rem; }
 .hero-copy > p:last-child { color: #bfd0c2; max-width: 58ch; }
 .grid-hero-photo { display: block; width: 100%; height: clamp(125px, 20vw, 230px); object-fit: cover; border-radius: 3px 24px 3px 24px; border: 1px solid #607f65; }
 @media (max-width: 550px) { .hero { grid-template-columns: 1fr; } .grid-hero-photo { height: 115px; } }
+
+.grid-scene { position: relative; min-width: 0; }
+.grid-scene .grid-hero-photo { height: clamp(155px, 24vw, 280px); object-position: center 57%; }
+.grid-scene .budget { position: absolute; bottom: .65rem; left: .65rem; max-width: calc(100% - 1.3rem); margin: 0; gap: .6rem 1rem; flex-wrap: wrap; border: 1px solid #759375; background: #14261c; }
