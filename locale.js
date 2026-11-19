@@ -43,7 +43,6 @@
     "Cleaning": "Limpeza",
     "Changes could not be saved in this browser.": "Não foi possível salvar as alterações neste navegador.",
     "Open full site": "Abrir site completo",
-    "Wesley Bertolaia | Web Design & Frontend": "Wesley Bertolaia | Design web e front-end",
     "Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.": "Portfólio de design web de Wesley Bertolaia. Três protótipos publicados sobre consultas, agendamento de pacientes e registro de jornada.",
     "Case Studies | Wesley Bertolaia": "Estudos de caso | Wesley Bertolaia",
     "Three case studies by Wesley Bertolaia in consultation acquisition, patient booking, and employee onboarding.": "Três estudos de caso de Wesley Bertolaia sobre consultas, agendamento de pacientes e registro de jornada.",
