@@ -6,9 +6,9 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Web Design & Frontend</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=left-cards">
-  <script src="./locale.js?v=left-cards"></script>
-  <script src="./preview.js?v=left-cards" defer></script>
+  <link rel="stylesheet" href="./style.css?v=about-projects">
+  <script src="./locale.js?v=about-projects"></script>
+  <script src="./preview.js?v=about-projects" defer></script>
   <link rel="stylesheet" href="./locale.css">
 </head>
 <body>
@@ -18,14 +18,20 @@
       <h1>Wesley Bertolaia<span>.</span></h1>
     </div>
     <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#demos">Projects</a>
       <a href="./case-studies.html">Case studies</a>
       <a href="https://github.com/wesleybertolaia/">GitHub</a>
     <span data-language-menu></span></nav>
   </header>
   <main class="wrap">
-    <section class="shelf" id="demos" aria-label="Live project demos">
+    <section class="about-intro" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About me</h2>
+      <p>I’m a software developer who enjoys making everyday tasks easier to do on the web. I like taking an idea from the first sketch to something you can actually use.</p>
+    </section>
+    <section class="shelf" id="demos" aria-labelledby="projects-title">
       <div class="project-list">
-        <h2>Projects</h2>
+        <h2 id="projects-title">Projects</h2>
         <div class="project-cards">
           <button class="project-card" type="button" aria-pressed="true" aria-controls="live-preview" data-project="carepath" data-url="https://wesleybertolaia.github.io/carepath/">
             <span class="project-copy"><strong>CarePath</strong><span>Online consultation funnel</span></span><span class="project-art art-care" aria-hidden="true"></span>

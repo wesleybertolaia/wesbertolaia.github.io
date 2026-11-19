@@ -1,5 +1,8 @@
 (() => {
   const messages = {
+    "About": "Sobre",
+    "About me": "Sobre mim",
+    "I’m a software developer who enjoys making everyday tasks easier to do on the web. I like taking an idea from the first sketch to something you can actually use.": "Sou desenvolvedor de software e gosto de simplificar tarefas do dia a dia na web. Gosto de levar uma ideia do primeiro esboço até algo que você possa usar de verdade.",
     "Language": "Idioma",
     "Portfolio": "Portfólio",
     "Main navigation": "Navegação principal",
