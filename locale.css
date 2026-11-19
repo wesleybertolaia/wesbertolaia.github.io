@@ -38,3 +38,25 @@ header nav:has(> [data-language-menu]) { display: flex; flex-wrap: wrap; align-i
   border-color: var(--lime);
 }
 .language-toggle svg { width: 24px; height: auto; border-radius: 3px; }
+
+@media (max-width: 640px) {
+  .masthead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: .5rem;
+  }
+  .masthead .site-name {
+    font-size: clamp(1.18rem, 4.5vw, 1.65rem);
+    overflow-wrap: anywhere;
+  }
+  .masthead nav:has(> [data-language-menu]) {
+    justify-self: end;
+    flex-wrap: nowrap;
+    gap: .45rem;
+  }
+  .masthead nav a { font-size: .85rem; }
+  .masthead .language-toggle { padding: 1px; }
+  .masthead .language-toggle button { width: 34px; height: 34px; }
+  .masthead .language-toggle svg { width: 19px; }
+}
