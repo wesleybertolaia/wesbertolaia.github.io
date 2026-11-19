@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Pawday daycare, boarding and grooming for dogs and cats.">
   <title>Pawday | Daycare, boarding & grooming</title>
-  <link rel="stylesheet" href="./pawday.css?v=stay">
+  <link rel="stylesheet" href="./pawday.css?v=reception">
   <script src="../locale.js?v=pawday-stay" defer></script>
-  <script src="./pawday.js?v=stay" defer></script>
+  <script src="./pawday.js?v=reception" defer></script>
 </head>
 <body>
   <header class="wrap top"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"></span> Pawday</a><nav><a href="#services">Services</a><a href="#bookings">Bookings</a><span data-language-menu></span></nav></header>
@@ -17,13 +17,19 @@
         <h1 id="headline" tabindex="-1">Good days for <em>good pets.</em></h1>
         <p>A play day, a weekend stay, or a fresh coat. Find the right care for your dog or cat and see the price before you book.</p>
         <div class="hero-actions">
+          <div class="species hero-species" role="group" aria-label="Pet type">
+            <button type="button" data-species="dog" aria-pressed="true">Dog</button>
+            <button type="button" data-species="cat" aria-pressed="false">Cat</button>
+          </div>
           <a class="button" href="#services">Find pet care <span aria-hidden="true">↗</span></a>
           <a class="secondary-link" href="#bookings">Your bookings</a>
         </div>
         <a class="button preview-launch" href="#services">Find pet care</a>
       </div>
       <figure class="portrait" aria-hidden="true">
-        <img src="./pawday-paw.webp" alt="" width="840" height="840" fetchpriority="high">
+        <img class="portrait-base" src="./pawday-paw.webp" alt="" width="840" height="840" fetchpriority="high">
+        <img class="portrait-cats" src="./pawday-paw.webp" alt="" width="840" height="840">
+        <img class="portrait-dogs" src="./pawday-paw.webp" alt="" width="840" height="840">
       </figure>
     </section>
     <div id="service-placement"></div>

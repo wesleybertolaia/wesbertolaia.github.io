@@ -45,7 +45,7 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 .project-card:nth-child(1) { --project-accent: #d4b0ee; --project-shade: #32253d; }
 .project-card:nth-child(2) { --project-accent: #8bdfc7; --project-shade: #1e3836; }
-.project-card:nth-child(3) { --project-accent: #b6b5ff; --project-shade: #2c2b48; }
+.project-card:nth-child(3) { --project-accent: #f8d675; --project-shade: #303b31; }
 .project-card:hover { border-color: var(--project-accent); }
 .project-card[aria-pressed="true"] {
   border-color: var(--project-accent);
@@ -384,7 +384,7 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
 .turnaround-evidence { margin-top: 1.65rem; }
 @media (max-width:600px) { .work-pair { grid-template-columns: 1fr; } }
 
-.project-card:nth-child(4) { --project-accent: #a9bee7; --project-shade: #28374d; }
+.project-card:nth-child(4) { --project-accent: #f1ad88; --project-shade: #422b2c; }
 .project-card:nth-child(5) { --project-accent: #d5f587; --project-shade: #243929; }
 .art-pawday::before {
   inset: 25px auto auto 21px;

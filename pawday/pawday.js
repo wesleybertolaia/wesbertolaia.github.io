@@ -72,6 +72,7 @@
 
   const dialog = get('booking-dialog');
   const services = get('services');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const compact = matchMedia('(max-width: 664px), (max-height: 399px)');
   let currentPanel = 'home';
 
@@ -81,7 +82,19 @@
     services.hidden = compact.matches && currentPanel !== 'services';
   }
 
-  function navigate(view) {
+  function animatePanel(element, origin) {
+    if (reducedMotion.matches) return;
+    const destination = element.getBoundingClientRect();
+    const start = origin ? {
+      transformOrigin: '0 0', opacity: .4,
+      transform: `translate(${origin.left - destination.left}px, ${origin.top - destination.top}px) scale(${Math.min(.82, origin.width / destination.width)}, ${Math.min(.85, origin.height / destination.height)})`,
+    } : { transform: 'translateY(10px)', opacity: .45 };
+    element.animate([start, { transform: 'none', opacity: 1 }], {
+      duration: origin ? 500 : 300, easing: 'cubic-bezier(.2,.75,.23,1)',
+    });
+  }
+
+  function navigate(view, origin) {
     currentPanel = view;
     const panelHeading = { home: 'headline', services: 'services-title', booking: 'booking-title', bookings: 'bookings-title' }[view];
     placeServices();
@@ -90,7 +103,12 @@
     const showDialog = view === 'booking' || view === 'bookings' || (view === 'services' && compact.matches);
     if (showDialog) {
       dialog.setAttribute('aria-labelledby', panelHeading);
-      if (!dialog.open) dialog.showModal();
+      if (!dialog.open) {
+        dialog.showModal();
+        animatePanel(dialog, origin);
+      } else {
+        animatePanel(get(view));
+      }
     } else if (dialog.open) {
       dialog.close();
     }
@@ -163,7 +181,7 @@
         get('booking-error').textContent = '';
         renderSummary();
         renderEstimate();
-        navigate('booking');
+        navigate('booking', card.getBoundingClientRect());
       });
       card.append(heading, node('p', t(description), 'service-description'), button);
       return card;
@@ -238,9 +256,16 @@
     button.addEventListener('click', () => {
       if (species === button.dataset.species) return;
       species = button.dataset.species;
+      document.querySelector('.portrait').dataset.pet = species;
       draft = undefined;
       pet.replaceChildren();
       renderServices();
+      if (!reducedMotion.matches) {
+        [...list.children].forEach((card, index) => card.animate(
+          [{ transform: 'translateY(9px) scale(.98)', opacity: .35 }, { transform: 'none', opacity: 1 }],
+          { duration: 380, delay: index * 65, easing: 'cubic-bezier(.2,.75,.23,1)', fill: 'backwards' },
+        ));
+      }
     });
   }
 
@@ -270,6 +295,7 @@
     renderReview();
     form.hidden = true;
     review.hidden = false;
+    animatePanel(review);
     show(confirm);
   });
 
