@@ -149,9 +149,8 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
 @media (max-width: 800px) { .case-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: no-preference) {
   .project-card {
-    transition: border-color .18s ease, translate .18s ease;
+    transition: border-color .18s ease;
   }
-  .project-card:is(:hover, :focus-visible) { translate: 3px 0; }
   .project-card::after { transition: transform .32s ease-out; }
   .project-card:is(:hover, :focus-visible, [aria-pressed="true"]) .art-care::after { animation: orbit .7s ease-in-out; }
   .project-card:is(:hover, :focus-visible, [aria-pressed="true"]) .art-dental::after { animation: calendar-mark .55s ease-in-out; }
