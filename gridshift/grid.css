@@ -58,3 +58,12 @@ details p { max-width: 68ch; margin-top: .5rem; }
   .grid-scene .grid-hero-photo { height: clamp(140px,32vw,245px); }
 }
 @media(max-width: 620px) { .planner { grid-template-columns: minmax(0,1fr); } }
+
+/* Scenario map with a legible overlay tied to the current allocation. */
+body { background: #111815; }
+.grid-scene .grid-hero-photo { border-radius: 12px; }
+.map-counts { position: absolute; z-index: 1; top: .65rem; left: .65rem; right: .65rem; display: flex; flex-wrap: wrap; gap: .3rem; }
+.map-counts > span { display: inline-flex; gap: .4rem; align-items: center; padding: .27rem .45rem; border-radius: 6px; background: #101b16; border: 1px solid #78937d; color: #edf5e9; font-size: .72rem; }
+.map-counts strong { color: #d5f587; font-variant-numeric: tabular-nums; }
+.choices,.results { background: #1b2620; border-radius: 12px; }
+.results .metric { padding: .6rem; border: 1px solid #43584a; border-radius: 7px; }

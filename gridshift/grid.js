@@ -41,6 +41,16 @@ const budget = 100000;
 const quantity = projects.map(() => 0);
 const choices = document.querySelector('#choices');
 const results = document.querySelector('#results');
+const mapCounts = document.querySelector('#map-counts');
+const mapPins = projects.map(project => {
+  const pin = document.createElement('span');
+  const label = document.createElement('span');
+  label.textContent = local(project.name);
+  const count = document.createElement('strong');
+  pin.append(label, count);
+  mapCounts.append(pin);
+  return count;
+});
 let pinned = null;
 const sum = key => projects.reduce((total, project, index) => total + project[key] * quantity[index], 0);
 
@@ -71,6 +81,7 @@ function update() {
     minus.disabled = !quantity[index];
     plus.disabled = projects[index].cost > remaining;
     output.value = quantity[index];
+    mapPins[index].textContent = String(quantity[index]);
   });
   document.querySelector('#remaining').textContent = money(remaining);
   const cards = metrics.map(metric => {

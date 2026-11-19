@@ -71,6 +71,7 @@ if (params.get('view') === 'campaign') {
   const model = language === 'pt-BR' ? { ...campaigns[brand], ...portuguese[brand] } : campaigns[brand];
   app.innerHTML = campaignMarkup(model, order);
 } else {
+  document.body.classList.add("editor-shell");
   app.innerHTML = `<section class="editor-toolbar"><div><h1>Campaign Studio</h1><p>${language === "pt-BR" ? "Um layout, muitas marcas." : "One layout, many brands."}</p></div>
     <a class="open" id="open" target="_blank" rel="noopener">Open live campaign ↗</a></section>
     <div class="workspace"><aside><h2>Build a page</h2>
@@ -79,7 +80,7 @@ if (params.get('view') === 'campaign') {
       <label>Preview width<select id="device" aria-label="Preview width"><option value="wide">Wide</option><option value="phone">Phone</option></select></label>
       <fieldset><legend>Section order</legend><ol id="blocks"></ol></fieldset>
       <p class="example-links"><a href="./?view=campaign&brand=night">Night Shift example</a><br><a href="./?view=campaign&brand=canopy">Common Canopy example</a></p>
-    </aside><div class="preview-zone"><div class="canvas-top"><span>Live canvas</span><span id="canvas-brand"></span></div><iframe title="Campaign preview" id="preview"></iframe></div></div>`;
+    </aside><div class="preview-zone"><div class="canvas-top"><span>Live canvas</span><span id="canvas-brand"></span><span id="canvas-size"></span></div><iframe title="Campaign preview" id="preview"></iframe></div></div>`;
   const brandField = document.querySelector('#brand');
   const blocks = document.querySelector('#blocks');
   const frame = document.querySelector('#preview');
@@ -118,8 +119,11 @@ if (params.get('view') === 'campaign') {
   }
 
   brandField.addEventListener('change', () => { brand = brandField.value; render(); });
+  const canvasSize = document.querySelector('#canvas-size');
+  canvasSize.textContent = 'Wide';
   document.querySelector('#device').addEventListener('change', event => {
     frame.classList.toggle('phone', event.target.value === 'phone');
+    canvasSize.textContent = event.target.value === 'phone' ? 'Phone · up to 390 px' : 'Wide';
   });
   render();
 }

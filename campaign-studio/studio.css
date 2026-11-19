@@ -77,3 +77,13 @@ iframe.phone { width: min(100%,390px); }
 @media(max-width: 680px) { .workspace { grid-template-columns: 1fr; } }
 
 .canvas-top { border-radius: 5px 5px 0 0; background: linear-gradient(90deg,#f6f0e3 42%,#f6f0e3d9 70%,#f6f0e37a), url("./header-visual.jpg") center 44% / cover; padding: .45rem .6rem; }
+
+.editor-shell { background: #22212a; color: #eae8f1; }
+.editor-shell .top { border-color: #454254; background: #292732; }
+.editor-shell .editor-toolbar .open { background: #dfd2ff; color: #241c38; }
+.editor-shell aside { background: #302e3b; border-color: #514d61; }
+.editor-shell :is(select,button) { background: #383547; border-color: #686278; }
+.editor-shell #blocks li { border: 1px solid #575167; padding: .25rem .35rem .25rem .6rem; border-radius: 7px; background: #272533; }
+.editor-shell #blocks button { min-width: 36px; }
+.editor-shell .preview-zone { background: #15141c; border-color: #514d61; }
+.editor-shell .canvas-top { color: #eee9ff; background: linear-gradient(90deg,#332c49 55%,#332c49c9),url("./header-visual.jpg") center/cover; }
