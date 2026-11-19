@@ -1,5 +1,18 @@
 (() => {
   const messages = {
+    "Campaign teams need to launch pages for different brands without rebuilding the layout each time.": "Equipes precisam lançar páginas para marcas diferentes sem reconstruir o layout toda vez.",
+    "The same sections power two brands. Reviewers can reorder them, test longer Portuguese copy on a phone and open the resulting page.": "As mesmas seções atendem duas marcas. É possível reorganizá-las, testar textos mais longos em português no celular e abrir a página resultante.",
+    "I verified that a shared link preserves the brand, language and section order.": "Verifiquei que o link compartilhado preserva a marca, o idioma e a ordem das seções.",
+    "Time a second campaign build and count the sections that need bespoke changes.": "Mediria o tempo para montar uma segunda campanha e quantas seções exigem mudanças específicas.",
+    "Campaign page builder": "Construtor de campanhas",
+    "Campaign Studio live demo": "Demo interativa do Campaign Studio",
+    "A neighbourhood has a fixed budget, but the options that save the most money aren’t always the ones that cut peak demand.": "Um bairro tem orçamento limitado, e as opções que mais economizam dinheiro nem sempre são as que mais reduzem a demanda de pico.",
+    "Visitors build a plan, pin it and see how a different allocation changes three outcomes. The assumptions are visible.": "Visitantes montam um plano, fixam a referência e comparam como outra distribuição muda três resultados. As premissas ficam visíveis.",
+    "The simulator enforces the budget and uses illustrative values for a fictional neighbourhood.": "O simulador respeita o orçamento e usa valores ilustrativos para um bairro fictício.",
+    "Ask users to pick a plan for a peak-demand goal, then explain what they gave up to reach it.": "Pediria que escolhessem um plano para reduzir o pico e explicassem de que benefícios abriram mão.",
+    "Energy planning simulator": "Simulador de planejamento energético",
+    "Gridshift live demo": "Demo interativa do Gridshift",
+
     "Open a project directly": "Abra um projeto diretamente",
     "Open CarePath": "Abrir CarePath",
     "Open DentalDesk": "Abrir DentalDesk",

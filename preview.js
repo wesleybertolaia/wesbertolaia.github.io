@@ -50,7 +50,7 @@ for (const card of cards) {
   card.addEventListener('click', () => select(card, compact.matches));
 }
 const legacyHash = location.hash.slice(1);
-if (legacyHash === 'work' || cards.some(card => card.dataset.project === legacyHash)) {
+if (legacyHash === 'work' || ['carepath', 'dentaldesk', 'shiftledger'].includes(legacyHash)) {
   location.replace(localizedUrl('./case-studies.html' + (legacyHash === 'work' ? '' : '#' + legacyHash)));
 } else {
   const wanted = new URLSearchParams(location.search).get('demo');

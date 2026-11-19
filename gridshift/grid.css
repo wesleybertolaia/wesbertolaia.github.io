@@ -1,0 +1,36 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #101b16; color: #edf5e9; font: 16px/1.5 system-ui,sans-serif; }
+a { color: #d5f587; text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid #d5f587; outline-offset: 4px; }
+header,main { width: min(1060px,calc(100% - 2rem)); margin: auto; }
+header { display: flex; justify-content: space-between; padding: .85rem 0; border-bottom: 1px solid #395244; font-size: .85rem; }
+.hero { padding: clamp(1.5rem,5vw,4rem) 0 1.5rem; }
+.eyebrow { margin: 0; color: #d5f587; font: .75rem/1.5 ui-monospace,monospace; text-transform: uppercase; letter-spacing: .08em; }
+h1,h2,h3,p,dl,dd { margin: 0; }
+h1 { max-width: 16ch; margin: .5rem 0 .65rem; font-size: clamp(2rem,5.5vw,4.6rem); line-height: .99; letter-spacing: -.055em; }
+.hero > p:last-child { color: #bfd0c2; max-width: 58ch; }
+.planner { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: .8rem; }
+.choices,.results { padding: clamp(.8rem,2vw,1.3rem); border: 1px solid #3a5144; border-radius: 16px; background: #17271e; }
+.section-head,.choice,.budget { display: flex; justify-content: space-between; align-items: center; gap: .6rem; }
+h2 { font-size: 1.15rem; } h3 { font-size: .95rem; }
+.choice { border-bottom: 1px solid #3a5144; padding: .7rem 0; }
+.choice p,small,dt,.takeaway,details p { color: #bfd0c2; font-size: .84rem; }
+small { display: block; margin-top: .2rem; }
+button { min-height: 44px; min-width: 44px; border: 1px solid #708672; border-radius: 10px; background: #243b2b; color: #edf5e9; font: inherit; cursor: pointer; }
+button:disabled { opacity: .46; cursor: default; }
+.stepper { display: flex; align-items: center; gap: .3rem; }
+output { text-align: center; min-width: 1.3rem; font-variant-numeric: tabular-nums; }
+.budget { margin-top: .8rem; font-size: .9rem; }
+.budget strong { color: #d5f587; }
+.metric { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .25rem .5rem; margin-top: .85rem; align-items: baseline; }
+.metric dd { font-weight: 700; }
+meter { grid-column: 1 / -1; width: 100%; height: .8rem; accent-color: #d5f587; }
+meter::-webkit-meter-optimum-value { background: #d5f587; }
+.takeaway { margin-top: 1rem; }
+details { padding-block: 1rem 2rem; }
+summary { cursor: pointer; color: #d5f587; }
+details p { max-width: 68ch; margin-top: .5rem; }
+@media (max-width: 640px) { .planner { grid-template-columns: minmax(0,1fr); } }
+
+.comparison { grid-column: 1 / -1; color: #bfd0c2; font-size: .78rem; }
+#pin { padding-inline: .65rem; font-size: .84rem; }
