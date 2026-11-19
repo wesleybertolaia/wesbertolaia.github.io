@@ -14,7 +14,7 @@
     "About me": "Sobre mim",
     "Full-stack": "Desenvolvedor",
     "developer.": "full stack.",
-    "I’m based in São Paulo, Brazil. I have 3+ years of experience building web applications, from Java APIs to Angular interfaces.": "Moro em São Paulo, Brasil, e tenho mais de três anos de experiência em aplicações web, de APIs em Java a interfaces em Angular.",
+    "I’m a full-stack developer based in São Paulo with 3+ years of experience. I connect Java and Spring Boot services to Angular interfaces, and use impact analysis and unit tests to improve existing systems without disrupting the people who use them.": "Sou desenvolvedor full stack em São Paulo e tenho mais de três anos de experiência. Integro serviços em Java e Spring Boot a interfaces em Angular e uso análise de impacto e testes unitários para evoluir sistemas sem atrapalhar quem os utiliza.",
     "Experience": "Experiência",
     "Software Developer · Porto client": "Desenvolvedor de Software · Cliente Porto",
     "Full Stack Developer": "Desenvolvedor Full Stack",
