@@ -10,7 +10,7 @@ if (pt) {
 }
 
 const copy = {
-  eyebrow: 'Gridshift · Simulador de cenários',
+  eyebrow: 'Mesmo orçamento. Diferentes resultados.',
   title: 'Orçamento energético do bairro',
   intro: 'Monte um plano para 100 casas com US$ 100 mil. Compare a economia, as emissões e a demanda no horário de pico.',
   plan: 'Seu plano',

@@ -58,3 +58,7 @@ iframe.phone { width: min(100%,390px); }
 .campaign.night h1 { font-weight: 850; text-transform: uppercase; }
 .campaign.canopy h1 { font-family: Georgia, serif; font-weight: 500; letter-spacing: -.045em; }
 .campaign.canopy .cta { border-radius: 999px; }
+
+.studio-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, 30%); gap: 1.2rem; align-items: center; }
+.studio-intro img { display: block; width: 100%; height: clamp(95px, 14vw, 155px); object-fit: cover; border: 1px solid #6b675b; border-radius: 4px; }
+@media (max-width: 550px) { .studio-intro { grid-template-columns: 1fr; } .studio-intro img { height: 90px; } }

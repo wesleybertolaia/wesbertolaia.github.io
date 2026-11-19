@@ -71,8 +71,8 @@ if (params.get('view') === 'campaign') {
   const model = language === 'pt-BR' ? { ...campaigns[brand], ...portuguese[brand] } : campaigns[brand];
   app.innerHTML = campaignMarkup(model, order);
 } else {
-  app.innerHTML = `<section class="studio-intro"><p class="tag">Reusable web design</p><h1>Campaign Studio</h1>
-    <p>Choose a brand, arrange the sections, and preview the page before sharing it.</p></section>
+  app.innerHTML = `<section class="studio-intro"><div><p class="tag">${language === "pt-BR" ? "Um layout, muitas marcas." : "One layout, many brands."}</p><h1>Campaign Studio</h1>
+    <p>${language === "pt-BR" ? "Escolha uma marca, organize as seções e confira a página antes de compartilhar." : "Choose a brand, arrange the sections, and preview the page before sharing it."}</p></div><img src="./header-visual.jpg" alt="" width="1200" height="800"></section>
     <div class="workspace"><aside><h2>Build a page</h2>
       <label>Brand<select id="brand" aria-label="Brand"><option value="night">Night Shift</option><option value="canopy">Common Canopy</option></select></label>
       <label>Campaign language<select id="campaign-language" aria-label="Campaign language"><option value="en">English</option><option value="pt-BR">Português do Brasil</option></select></label>
