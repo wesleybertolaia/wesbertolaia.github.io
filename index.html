@@ -6,8 +6,8 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Explore live projects in consultation intake, patient booking, and team timesheets.">
   <title>Wesley Bertolaia | Portfolio</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=stable-preview-scroll">
-  <script src="./locale.js?v=project-voices"></script>
+  <link rel="stylesheet" href="./style.css?v=pawday">
+  <script src="./locale.js?v=pawday"></script>
   <script src="./preview.js?v=stable-preview-scroll" defer></script>
   <link rel="stylesheet" href="./locale.css?v=about-page">
   <script src="./entrance.js?v=sequence" defer></script>
@@ -42,8 +42,8 @@
           <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="shiftledger" data-url="https://wesleybertolaia.github.io/shiftledger/?v=workspace-refresh">
             <span class="project-copy"><strong>ShiftLedger</strong><span>Team timesheets · React</span></span><span class="project-art art-shift" aria-hidden="true"></span>
           </button>
-          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="campaign-studio" data-url="https://wesleybertolaia.github.io/campaign-studio/?v=workspace-refresh">
-            <span class="project-copy"><strong>Campaign Studio</strong><span>Campaign page builder</span></span><span class="project-art art-campaign-studio" aria-hidden="true"></span>
+          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="pawday" data-url="https://wesleybertolaia.github.io/pawday/">
+            <span class="project-copy"><strong>Pawday</strong><span>Dog &amp; cat care</span></span><span class="project-art art-pawday" aria-hidden="true"></span>
           </button>
           <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="gridshift" data-url="https://wesleybertolaia.github.io/gridshift/?v=workspace-refresh">
             <span class="project-copy"><strong>Gridshift</strong><span>Energy planning simulator</span></span><span class="project-art art-gridshift" aria-hidden="true"></span>
@@ -82,11 +82,11 @@
             <dt>What I verified</dt><dd>I tested returning a shift for a break correction, approving the resubmission and checking the exported minutes.</dd>
             <dt>How I’d test it</dt><dd>Give users a returned shift with an incorrect break. Measure correct resubmissions and time to fix the entry.</dd>
           </dl>
-          <dl data-project-note="campaign-studio" hidden>
-            <dt>Opportunity</dt><dd>Campaign teams need to launch pages for different brands without rebuilding the layout each time.</dd>
-            <dt>What shipped</dt><dd>The same sections power two brands. Reviewers can reorder them, test longer Portuguese copy on a phone and open the resulting page.</dd>
-            <dt>What I verified</dt><dd>I verified that a shared link preserves the brand, language and section order.</dd>
-            <dt>How I’d test it</dt><dd>Time a second campaign build and count the sections that need bespoke changes.</dd>
+          <dl data-project-note="pawday" hidden>
+            <dt>Opportunity</dt><dd>Pet owners comparing overnight stays need to know whether the service suits their animal and what the full stay costs.</dd>
+            <dt>What shipped</dt><dd>Dog and cat owners see different care options and prices. The booking shows the total for the selected nights before they confirm.</dd>
+            <dt>What I verified</dt><dd>I checked the price for a two-night cat stay and confirmed the booking could be reopened and cancelled after reload.</dd>
+            <dt>How I’d test it</dt><dd>Compare an upfront nightly rate with pricing shown at review. Track completed bookings per service view and whether owners can correctly predict the total.</dd>
           </dl>
           <dl data-project-note="gridshift" hidden>
             <dt>Opportunity</dt><dd>A neighbourhood has a fixed budget, but the options that save the most money aren’t always the ones that cut peak demand.</dd>

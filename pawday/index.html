@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pawday daycare, boarding and grooming for dogs and cats.">
+  <title>Pawday | Daycare, boarding & grooming</title>
+  <link rel="stylesheet" href="./pawday.css">
+  <script src="../locale.js?v=pawday" defer></script>
+  <script src="./pawday.js" defer></script>
+</head>
+<body>
+  <header class="wrap top"><a class="brand" href="./"><span aria-hidden="true">✿</span> Pawday</a><nav><a href="#services">Services</a><a href="#bookings">Bookings</a><span data-language-menu></span></nav></header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="headline">
+      <div class="hero-copy"><p class="kicker">Daycare · Boarding · Grooming</p>
+        <h1 id="headline">Good days for <em>good pets.</em></h1>
+        <p>A play day, a weekend stay, or a fresh coat. Find the right care for your dog or cat and see the price before you book.</p>
+        <a class="button" href="#services">Find pet care <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="portrait"><img src="./pets.jpg" alt="" width="1100" height="733"><figcaption>Dogs &amp; cats welcome</figcaption></figure>
+    </section>
+    <section id="services" aria-labelledby="services-title">
+      <div class="section-head"><h2 id="services-title">What does your pet need?</h2>
+        <div class="species" role="group" aria-label="Pet type"><button type="button" data-species="dog" aria-pressed="true">Dog</button><button type="button" data-species="cat" aria-pressed="false">Cat</button></div>
+      </div>
+      <div class="services" id="service-list"></div>
+    </section>
+    <section class="booking" id="booking" hidden aria-labelledby="booking-title">
+      <h2 id="booking-title" tabindex="-1">Plan a visit</h2>
+      <p id="service-summary"></p>
+      <form id="visit-form"><label>Sample pet<select name="pet" required></select></label>
+        <label>Start date<input type="date" name="start" required></label>
+        <label id="end-label">Checkout date<input type="date" name="end"></label>
+        <label id="time-label">Time<select name="time"><option>09:00</option><option>12:00</option><option>15:00</option></select></label>
+        <p id="booking-error" role="alert"></p><button class="button" type="submit">Review booking</button>
+      </form>
+      <div id="review" hidden><dl id="review-details"></dl><p>Sample booking. No payment is taken.</p>
+        <div class="actions"><button class="button" type="button" id="confirm">Confirm sample booking</button><button type="button" id="edit">Edit details</button></div>
+      </div>
+    </section>
+    <section class="booking" id="bookings" aria-labelledby="bookings-title">
+      <h2 id="bookings-title" tabindex="-1">Your bookings</h2>
+      <p id="booking-status" role="status"></p><div id="history"></div>
+    </section>
+  </main>
+  <footer class="wrap">Practice bookings stay on this device.</footer>
+</body>
+</html>
