@@ -196,10 +196,10 @@ h1 em { color: var(--burnt-orange); }
   width: 100%;
   padding: .4rem var(--service-pad);
   border: 0;
-  border-top: 1px solid var(--card-rule);
+  border-top: 1px solid var(--line);
   border-radius: 0;
-  background: transparent;
-  color: inherit;
+  background: #fff8ef;
+  color: var(--ink);
   font-size: .82rem;
   font-weight: 750;
   text-align: left;
@@ -211,22 +211,11 @@ h1 em { color: var(--burnt-orange); }
   box-shadow: inset 0 2px 0 #bd7d45;
   background: #fff1d9;
 }
-.service-daycare .service-action {
-  justify-self: end;
-  width: auto;
-  margin: 0 .42rem .42rem 0;
-  padding-inline: .45rem;
-  border: 1px solid #deb387;
-  border-radius: .55rem;
-  background: #fffaf0;
-}
 .service-stay {
-  --card-rule: #cf8b61;
-  --card-muted: #ffdec9;
+  --card-rule: #e7aa77;
+  --card-muted: #67462f;
   border-radius: 14px;
-  border-color: #8f421e;
-  background: #7b371a;
-  color: #fff8ef;
+  background: #ffe0bd;
 }
 .service-stay .service-price {
   position: relative;
@@ -239,14 +228,11 @@ h1 em { color: var(--burnt-orange); }
   inset: calc(var(--service-pad) - .28rem) calc(var(--service-pad) - .32rem) 0 -.32rem;
   z-index: -1;
   border-radius: 8px;
-  background: #ffe0b6;
+  background: #fff4df;
 }
 .service-stay .service-price strong { font: 700 clamp(1.33rem, 2.7vw, 2rem)/1 Georgia, serif; letter-spacing: -.05em; }
 .service-stay .service-unit { color: #643617; }
-.service-stay .service-action { border-top-style: dashed; }
-.service-stay .service-action:focus-visible { outline-color: #fff3d9; }
 .service-grooming { border-radius: 20px 20px 6px 20px; background: #fffdf8; }
-.service-grooming .service-action { color: #7b371a; }
 .booking { max-width: 780px; margin: .4rem auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: clamp(.75rem, 3vw, 1.5rem); }
 .booking h2 { margin-bottom: .35rem; }
 #service-summary { color: var(--muted); }
