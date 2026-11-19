@@ -149,17 +149,13 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
 @media (max-width: 800px) { .case-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: no-preference) {
   .project-card {
-    animation: card-in .4s ease-out both;
     transition: border-color .18s ease, translate .18s ease;
   }
-  .project-card:nth-child(2) { animation-delay: .065s; }
-  .project-card:nth-child(3) { animation-delay: .13s; }
   .project-card:is(:hover, :focus-visible) { translate: 3px 0; }
   .project-card::after { transition: transform .32s ease-out; }
   .project-card:is(:hover, :focus-visible, [aria-pressed="true"]) .art-care::after { animation: orbit .7s ease-in-out; }
   .project-card:is(:hover, :focus-visible, [aria-pressed="true"]) .art-dental::after { animation: calendar-mark .55s ease-in-out; }
   .project-card:is(:hover, :focus-visible, [aria-pressed="true"]) .art-shift::after { animation: hand-turn .64s ease-in-out; }
-  @keyframes card-in { from { opacity: 0; transform: translateX(-8px); } }
   @keyframes orbit { to { offset-distance: 172%; } }
   @keyframes calendar-mark { 50% { translate: 0 13px; } }
   @keyframes hand-turn { to { rotate: 408deg; } }
