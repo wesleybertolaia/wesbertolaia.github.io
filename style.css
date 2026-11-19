@@ -344,3 +344,32 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
   color: var(--mute);
   font-size: .75rem;
 }
+
+.work-intro { padding-block: clamp(1.75rem, 4vw, 3.8rem) 1.8rem; }
+.work-intro h1 {
+  max-width: 19ch;
+  margin: .75rem 0;
+  font-size: clamp(2.45rem, 5vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -.065em;
+  text-wrap: balance;
+}
+.work-intro h1 em { color: #d7dfca; font: italic 400 1em Georgia, serif; }
+.work-intro .profile-summary { max-width: 63ch; }
+.work-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 44px;
+  margin-top: 1rem;
+  padding: .45rem .85rem;
+  border: 1px solid var(--lime);
+  border-radius: 7px;
+  color: var(--lime);
+  text-decoration: none;
+}
+.work-cta:hover { background: var(--lime); color: #171c14; }
+.about-intro { margin-top: 2rem; border-top: 1px solid var(--line); }
+.profile-bio h2 { margin-bottom: .6rem; font-size: 1.125rem; }
+.project-notes .variant-link { margin-top: .8rem; }
+.variant-link a { color: var(--lime); }

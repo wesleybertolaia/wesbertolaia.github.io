@@ -6,8 +6,8 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Portfolio</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=case-specifics">
-  <script src="./locale.js?v=case-specifics"></script>
+  <link rel="stylesheet" href="./style.css?v=healthcare-work">
+  <script src="./locale.js?v=healthcare-work"></script>
   <script src="./preview.js?v=inline-language" defer></script>
   <link rel="stylesheet" href="./locale.css?v=mobile-toggle">
   <script src="./entrance.js?v=sequence" defer></script>
@@ -23,10 +23,64 @@
     <span data-language-menu></span></nav>
   </header>
   <main class="wrap">
-    <section class="about-intro" id="about" aria-labelledby="about-title">
+    <section class="work-intro" aria-labelledby="about-title">
+      <p class="about-label">Selected work</p>
+      <h1 id="about-title">Making the next step in care <em>clearer.</em></h1>
+      <p class="profile-summary">I design, build, and ship web experiences. These projects explore how clearer offers and better onboarding can help people decide what to do next.</p>
+      <a class="work-cta" href="#demos">Explore the live work <span aria-hidden="true">↓</span></a>
+    </section>
+    <section class="shelf" id="demos" aria-labelledby="projects-title">
+      <div class="project-list">
+        <h2 id="projects-title">Projects</h2>
+        <div class="project-cards">
+          <button class="project-card" type="button" aria-pressed="true" aria-controls="live-preview" data-project="carepath" data-url="https://wesleybertolaia.github.io/carepath/">
+            <span class="project-copy"><strong>CarePath</strong><span>Online consultation funnel</span></span><span class="project-art art-care" aria-hidden="true"></span>
+          </button>
+          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="dentaldesk" data-url="https://wesleybertolaia.github.io/dentaldesk/patient.html">
+            <span class="project-copy"><strong>DentalDesk</strong><span>Patient booking · Angular</span></span><span class="project-art art-dental" aria-hidden="true"></span>
+          </button>
+          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="shiftledger" data-url="https://wesleybertolaia.github.io/shiftledger/">
+            <span class="project-copy"><strong>ShiftLedger</strong><span>Team timesheets · React</span></span><span class="project-art art-shift" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <section class="preview-panel" id="live-preview" aria-labelledby="preview-title">
+        <header class="preview-bar">
+          <h2 id="preview-title" tabindex="-1" aria-live="polite">CarePath live demo</h2>
+          <a id="open-demo" href="https://wesleybertolaia.github.io/carepath/">Open full site</a>
+        </header>
+        <iframe id="demo-frame" title="CarePath live demo" src="https://wesleybertolaia.github.io/carepath/"></iframe>
+      </section>
+      <aside class="project-notes" aria-labelledby="project-notes-title">
+        <h2 id="project-notes-title">Design &amp; evidence</h2>
+        <div aria-live="polite">
+          <dl data-project-note="carepath">
+            <dt>Opportunity</dt><dd>Patients need to know who reviews their request and what submitting it commits them to.</dd>
+            <dt>What shipped</dt><dd>Two live entry paths share the same intake: a one-question guide and a direct start. Both end in a trackable request.</dd>
+            <dt>What I verified</dt><dd>Browser checks covered submitting, reopening and withdrawing a sample request.</dd>
+            <dt>How I’d test it</dt><dd>Compare sample submissions per landing visit. Ask users what happens next to check whether the guide improves understanding.</dd>
+            <dd class="variant-link"><a href="https://wesleybertolaia.github.io/carepath/?path=direct">Try direct entry <span aria-hidden="true">↗</span></a></dd>
+          </dl>
+          <dl data-project-note="dentaldesk" hidden>
+            <dt>Opportunity</dt><dd>A patient can mistake a requested time for a confirmed appointment and make plans too early.</dd>
+            <dt>What shipped</dt><dd>Two headlines lead to the same booking flow. Patients choose a time before entering sample details and can track the clinic’s decision.</dd>
+            <dt>What I verified</dt><dd>I tested a clinic decline, a patient retry and the updated status in the patient view.</dd>
+            <dt>How I’d test it</dt><dd>Compare requests per landing visit across headlines. After submission, ask users whether their appointment is confirmed.</dd>
+            <dd class="variant-link"><a href="https://wesleybertolaia.github.io/dentaldesk/patient.html?offer=times">Try availability-first headline <span aria-hidden="true">↗</span></a></dd>
+          </dl>
+          <dl data-project-note="shiftledger" hidden>
+            <dt>Opportunity</dt><dd>When a shift comes back with an unclear rejection, employees have to guess what to fix.</dd>
+            <dt>What shipped</dt><dd>Managers return a shift with a specific reason. Employees correct and resubmit it. Approved entries can be exported.</dd>
+            <dt>What I verified</dt><dd>I tested returning a shift for a break correction, approving the resubmission and checking the exported minutes.</dd>
+            <dt>How I’d test it</dt><dd>Give users a returned shift with an incorrect break. Measure correct resubmissions and time to fix the entry.</dd>
+          </dl>
+        </div>
+        <p class="case-note-status">Browser checks used sample data. No live conversion results yet.</p>
+      </aside>
+    </section>
+    <section class="about-intro" id="about" aria-labelledby="background-title">
       <div class="profile-bio">
-        <p class="about-label">About me</p>
-        <h1 id="about-title">Full-stack <em>developer.</em></h1>
+        <h2 id="background-title">About me</h2>
         <p class="profile-summary">I’m a full-stack developer based in São Paulo with 3+ years of experience. I connect Java and Spring Boot services to Angular interfaces, and use impact analysis and unit tests to improve existing systems without disrupting the people who use them.</p>
       </div>
       <div class="profile-details">
@@ -48,50 +102,6 @@
           </dl>
         </section>
       </div>
-    </section>
-    <section class="shelf" id="demos" aria-labelledby="projects-title">
-      <div class="project-list">
-        <h2 id="projects-title">Projects</h2>
-        <div class="project-cards">
-          <button class="project-card" type="button" aria-pressed="true" aria-controls="live-preview" data-project="carepath" data-url="https://wesleybertolaia.github.io/carepath/">
-            <span class="project-copy"><strong>CarePath</strong><span>Online consultation funnel</span></span><span class="project-art art-care" aria-hidden="true"></span>
-          </button>
-          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="dentaldesk" data-url="https://wesleybertolaia.github.io/dentaldesk/patient.html">
-            <span class="project-copy"><strong>DentalDesk</strong><span>Patient booking · Angular</span></span><span class="project-art art-dental" aria-hidden="true"></span>
-          </button>
-          <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="shiftledger" data-url="https://wesleybertolaia.github.io/shiftledger/">
-            <span class="project-copy"><strong>ShiftLedger</strong><span>Employee onboarding · React</span></span><span class="project-art art-shift" aria-hidden="true"></span>
-          </button>
-        </div>
-      </div>
-      <section class="preview-panel" id="live-preview" aria-labelledby="preview-title">
-        <header class="preview-bar">
-          <h2 id="preview-title" tabindex="-1" aria-live="polite">CarePath live demo</h2>
-          <a id="open-demo" href="https://wesleybertolaia.github.io/carepath/">Open full site</a>
-        </header>
-        <iframe id="demo-frame" title="CarePath live demo" src="https://wesleybertolaia.github.io/carepath/"></iframe>
-      </section>
-      <aside class="project-notes" aria-labelledby="project-notes-title">
-        <h2 id="project-notes-title">Case study</h2>
-        <div aria-live="polite">
-          <dl data-project-note="carepath">
-            <dt>Problem</dt><dd>Who reviews my request, and what happens after I start? Those questions can stop someone before they open the form.</dd>
-            <dt>Design decision</dt><dd>The guided route answers one question the visitor chooses. The direct route opens the same form preview immediately.</dd>
-            <dt>How I’d test it</dt><dd>Compare how many visitors reach the form preview and finish the demo in each route. Use drop-off at the question step to see whether guidance earns the extra click.</dd>
-          </dl>
-          <dl data-project-note="dentaldesk" hidden>
-            <dt>Problem</dt><dd>A patient needs to know if a time fits their schedule and whether it’s confirmed before they can plan around it.</dd>
-            <dt>Design decision</dt><dd>The booking flow shows sample slots before asking for contact details. The review step explains that a request still needs clinic confirmation.</dd>
-            <dt>How I’d test it</dt><dd>Test “See dental visit times” against “Request a dental visit” with the same booking flow. Compare requests per landing session. In a real clinic, check confirmed visits too.</dd>
-          </dl>
-          <dl data-project-note="shiftledger" hidden>
-            <dt>Problem</dt><dd>An 8-hour shift with a 30-minute unpaid break should count as 7h30. A wrong entry also changes the manager’s total.</dd>
-            <dt>Design decision</dt><dd>New users can load an editable example. The form checks the time range and break before adding net hours to the manager view.</dd>
-            <dt>How I’d test it</dt><dd>Compare the share of new users who save a correct first shift with an example versus a blank form. In a task using different hours, check how often people save the sample unchanged.</dd>
-          </dl>
-        </div>
-        <p class="case-note-status">Proposed tests with demo data.</p>
-      </aside>
     </section>
   </main>
 </body>
