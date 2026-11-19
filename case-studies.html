@@ -8,7 +8,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./style.css?v=balanced">
   <link rel="stylesheet" href="./locale.css?v=flag-toggle">
-  <script src="./locale.js?v=case-specifics"></script>
+  <script src="./locale.js?v=project-labels"></script>
 </head>
 <body>
   <header class="wrap top">
@@ -26,14 +26,14 @@
         <div class="links"><a class="button" href="./?demo=carepath#demos">Try the demo</a><a href="https://wesleybertolaia.github.io/carepath/?path=direct">Direct variant</a><a href="https://github.com/wesleybertolaia/carepath">Source</a></div>
       </article>
       <article class="case case-dental" id="dentaldesk">
-        <header><p class="eyebrow">Patient booking · Angular</p><h2>DentalDesk</h2></header>
+        <header><p class="eyebrow">Patient booking</p><h2>DentalDesk</h2></header>
         <section><h3>Problem</h3><p>A patient needs to know if a time fits their schedule and whether it’s confirmed before they can plan around it.</p></section>
         <section><h3>Design decision</h3><p>The booking flow shows sample slots before asking for contact details. The review step explains that a request still needs clinic confirmation.</p></section>
         <section><h3>How I’d test it</h3><p>Test “See dental visit times” against “Request a dental visit” with the same booking flow. Compare requests per landing session. In a real clinic, check confirmed visits too.</p></section>
         <div class="links"><a class="button" href="./?demo=dentaldesk#demos">Try the demo</a><a href="https://wesleybertolaia.github.io/dentaldesk/patient.html?offer=times">Offer variant</a><a href="https://github.com/wesleybertolaia/dentaldesk">Source</a></div>
       </article>
       <article class="case case-shift" id="shiftledger">
-        <header><p class="eyebrow">Employee onboarding · React</p><h2>ShiftLedger</h2></header>
+        <header><p class="eyebrow">Employee onboarding</p><h2>ShiftLedger</h2></header>
         <section><h3>Problem</h3><p>An 8-hour shift with a 30-minute unpaid break should count as 7h30. A wrong entry also changes the manager’s total.</p></section>
         <section><h3>Design decision</h3><p>New users can load an editable example. The form checks the time range and break before adding net hours to the manager view.</p></section>
         <section><h3>How I’d test it</h3><p>Compare the share of new users who save a correct first shift with an example versus a blank form. In a task using different hours, check how often people save the sample unchanged.</p></section>
