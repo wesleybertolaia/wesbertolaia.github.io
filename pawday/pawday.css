@@ -16,6 +16,7 @@
 }
 body { margin: 0; }
 .wrap { width: min(1180px,calc(100% - 2rem)); margin: auto; }
+[data-portfolio-preview] main.wrap { padding-block-start: 1rem; }
 header.top,header nav,.section-head,.actions { display: flex; align-items: center; justify-content: space-between; gap: .65rem 1rem; flex-wrap: wrap; }
 header.top { padding: .4rem 0; margin-bottom: .55rem; border-bottom: 1px solid var(--line); }
 .brand { display: inline-flex; align-items: center; gap: .5rem; font-size: 1.4rem; font-weight: 850; text-decoration: none; letter-spacing: -.04em; }
