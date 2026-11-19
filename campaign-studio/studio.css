@@ -1,0 +1,56 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body { margin: 0; background: #eeeee8; color: #23231d; font: 16px/1.55 system-ui, sans-serif; }
+a { color: inherit; text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid #5369df; outline-offset: 4px; }
+h1,h2,p { margin: 0; }
+.top { display: flex; justify-content: space-between; gap: .7rem; padding: .85rem clamp(1rem,5vw,4rem); border-bottom: 1px solid #aaa99e; font-size: .85rem; font-weight: 650; }
+.studio-intro,.workspace { width: min(1440px,calc(100% - 2rem)); margin-inline: auto; }
+.studio-intro { padding: 2.65rem 0 1.5rem; }
+.tag { font: 650 .75rem/1.5 ui-monospace,monospace; text-transform: uppercase; letter-spacing: .065em; }
+.studio-intro h1 { font-size: clamp(2.5rem,6vw,5rem); line-height: 1; letter-spacing: -.065em; margin: .35rem 0 .7rem; }
+.workspace { display: grid; grid-template-columns: 245px minmax(0,1fr); gap: 1rem; padding-bottom: 2rem; }
+aside,.preview-zone { background: #fff; border: 1px solid #cecdc2; border-radius: 13px; }
+aside { padding: 1rem; align-self: start; }
+aside h2 { font-size: 1.125rem; }
+label { display: grid; gap: .2rem; margin-top: .8rem; font-size: .85rem; font-weight: 650; }
+select,button { min-height: 44px; border: 1px solid #aaa99e; border-radius: 6px; background: white; color: inherit; font: inherit; }
+select { padding: .3rem; }
+button { min-width: 44px; cursor: pointer; }
+button:disabled { opacity: .4; cursor: default; }
+fieldset { border: 0; margin: 1rem 0; padding: 0; }
+legend { font-size: .85rem; font-weight: 650; }
+#blocks { list-style: none; margin: .4rem 0; padding: 0; }
+#blocks li { display: flex; align-items: center; gap: .3rem; margin-bottom: .3rem; font-size: .85rem; }
+#blocks span { flex: 1; }
+.open,.cta { display: inline-flex; align-items: center; min-height: 44px; padding: .45rem .8rem; background: #24241f; color: white; border-radius: 6px; text-decoration: none; }
+.example-links { margin-top: .8rem; font-size: .8rem; }
+.preview-zone { display: grid; justify-items: center; padding: .55rem; background: #dfded5; min-width: 0; }
+iframe { display: block; width: 100%; height: 620px; border: 0; border-radius: 8px; background: #fff; }
+iframe.phone { width: min(100%,390px); }
+.campaign { --ink:#1c141f; --paper:#ffd981; --accent:#e54860; color: var(--ink); background: var(--paper); }
+.campaign.canopy { --ink:#12382c; --paper:#e6efe2; --accent:#69ae81; }
+.campaign-hero,.programme { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: clamp(1rem,5vw,4rem); padding: clamp(1.5rem,7vw,6rem); }
+.campaign-hero { align-items: center; }
+.campaign h1 { font-size: clamp(2.35rem,6.5vw,6.5rem); line-height: .99; letter-spacing: -.065em; margin: .65rem 0 1rem; max-width: 12ch; }
+.campaign-hero p:not(.tag) { max-width: 45ch; }
+.campaign .cta { margin-top: 1.15rem; background: var(--ink); color: var(--paper); }
+.cover-art { position: relative; isolation: isolate; min-height: 220px; aspect-ratio: 1.4; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--ink); background: var(--accent); }
+.cover-art i { position: absolute; width: 53%; aspect-ratio: 1; top: 15%; left: 16%; border: 2px solid var(--ink); background: var(--paper); transform: rotate(-13deg); }
+.cover-art i:nth-child(2) { left: 27%; transform: rotate(10deg); background: var(--accent); }
+.cover-art i:nth-child(3) { left: 34%; transform: rotate(21deg); background: repeating-linear-gradient(0deg,var(--ink) 0 3px,var(--paper) 3px 11px); }
+.canopy .cover-art { border-radius: 55% 55% 8px 8px; }
+.canopy .cover-art i { border-radius: 90% 18%; transform: rotate(-22deg); }
+.canopy .cover-art i:nth-child(2) { transform: rotate(16deg); }
+.canopy .cover-art i:nth-child(3) { transform: rotate(50deg); background: #346b52; }
+.programme { border-top: 1px solid var(--ink); padding-block: clamp(1.4rem,4vw,3rem); }
+.programme h2 { margin-top: .4rem; font-size: clamp(1.25rem,3vw,2.3rem); line-height: 1.1; }
+.programme ol { list-style: none; margin: 0; padding: 0; }
+.programme li { display: grid; gap: .25rem; padding-bottom: .75rem; margin-bottom: .75rem; border-bottom: 1px solid var(--ink); }
+.programme details { grid-column: 1 / -1; }
+.programme summary { cursor: pointer; font-weight: 700; }
+.campaign-foot { padding: 1rem clamp(1.5rem,7vw,6rem); font-size: .8rem; }
+@media (max-width: 650px) {
+  .workspace,.campaign-hero,.programme { grid-template-columns: minmax(0,1fr); }
+  .cover-art { min-height: 140px; max-height: 220px; }
+}
