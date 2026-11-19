@@ -47,3 +47,14 @@ details p { max-width: 68ch; margin-top: .5rem; }
 .grid-scene { position: relative; min-width: 0; }
 .grid-scene .grid-hero-photo { height: clamp(155px, 24vw, 280px); object-position: center 57%; }
 .grid-scene .budget { position: absolute; bottom: .65rem; left: .65rem; max-width: calc(100% - 1.3rem); margin: 0; gap: .6rem 1rem; flex-wrap: wrap; border: 1px solid #759375; background: #14261c; }
+
+.hero { display: block; padding-block: .8rem 1.15rem; }
+.hero h1 { max-width: none; font-size: clamp(1.85rem,4vw,3.2rem); }
+.planner { grid-template-columns: minmax(210px,.85fr) minmax(0,1.4fr) minmax(180px,.75fr); align-items: start; }
+.grid-scene .grid-hero-photo { height: clamp(260px,32vw,460px); }
+@media(max-width: 875px) {
+  .planner { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .grid-scene { grid-column: 1 / -1; grid-row: 1; }
+  .grid-scene .grid-hero-photo { height: clamp(140px,32vw,245px); }
+}
+@media(max-width: 620px) { .planner { grid-template-columns: minmax(0,1fr); } }

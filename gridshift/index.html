@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore trade-offs in a fictional neighbourhood energy plan.">
   <title>Gridshift | Energy planning</title>
-  <link rel="stylesheet" href="./grid.css?v=composed-hero">
-  <script src="./grid.js?v=signature-hero" defer></script>
+  <link rel="stylesheet" href="./grid.css?v=project-ui">
+  <script src="./grid.js?v=project-ui" defer></script>
 </head>
 <body>
   <header><a href="../">Wesley Bertolaia</a><a id="language" href="?lang=pt-BR" lang="pt-BR">Português</a></header>
@@ -17,15 +17,15 @@
       <h1 data-text="title">Neighbourhood energy budget</h1>
       <p data-text="intro">Build a plan for 100 homes with a $100,000 budget. Compare savings, emissions, and demand at the busiest hour.</p>
       </div>
-      <div class="grid-scene">
-        <img class="grid-hero-photo" src="./header-visual.jpg" alt="" width="1200" height="800">
-        <div class="budget"><span data-text="remaining">Budget remaining</span><strong id="remaining"></strong></div>
-      </div>
     </section>
     <section class="planner" aria-label="Energy plan">
       <div class="choices">
         <div class="section-head"><h2 data-text="plan">Your plan</h2><button id="reset" type="button" data-text="reset">Reset</button></div>
         <div id="choices"></div>
+      </div>
+      <div class="grid-scene">
+        <img class="grid-hero-photo" src="./header-visual.jpg" alt="" width="1200" height="800">
+        <div class="budget"><span data-text="remaining">Budget remaining</span><strong id="remaining"></strong></div>
       </div>
       <div class="results">
         <div class="section-head"><h2 data-text="impact">Projected impact</h2><button id="pin" type="button" data-text="pin">Pin this plan</button></div>
