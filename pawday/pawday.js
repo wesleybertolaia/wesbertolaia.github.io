@@ -161,22 +161,15 @@
   }
 
   const serviceCards = bookingActions.map((_, index) => {
-    const card = node('article', undefined, 'service');
+    const layout = ['daycare', 'stay', 'grooming'][index];
+    const card = node('article', undefined, 'service service-' + layout);
     const heading = node('header', undefined, 'service-heading');
     const name = node('h3');
     const cost = node('p', undefined, 'service-price');
     const amount = node('strong');
     const unit = node('span', undefined, 'service-unit');
-    const unitText = document.createTextNode('');
-    unit.append(unitText);
-    if (index === 1) {
-      const toys = node('span', undefined, 'price-toys');
-      toys.setAttribute('aria-hidden', 'true');
-      toys.append(node('span', undefined, 'price-toy toy-ball'), node('span', undefined, 'price-toy toy-yarn'));
-      unit.prepend(toys);
-    }
     cost.append(amount, unit);
-    heading.append(name, cost);
+    heading.append(name);
     const description = node('p', undefined, 'service-description');
     const button = node('button', undefined, 'service-action');
     const label = document.createTextNode('');
@@ -206,9 +199,9 @@
       renderEstimate();
       navigate('booking', card.getBoundingClientRect());
     });
-    card.append(heading, description, button);
+    card.append(heading, description, cost, button);
     list.append(card);
-    return { card, name, amount, unitText, cost, description, label };
+    return { name, amount, unit, description, label };
   });
 
   function renderServices(animate = false) {
@@ -221,10 +214,8 @@
       fields.name.textContent = t(name);
       fields.description.textContent = t(description);
       fields.amount.textContent = money(rate);
-      fields.unitText.nodeValue = t(unit);
-      fields.cost.dataset.pet = species;
+      fields.unit.textContent = t(unit);
       fields.label.nodeValue = t(bookingActions[index]);
-      fields.card.classList.toggle('service-stay', unit === 'per night');
       if (animate && !reducedMotion.matches) {
         for (const element of [fields.description, fields.amount]) {
           const opacity = Number(getComputedStyle(element).opacity);
