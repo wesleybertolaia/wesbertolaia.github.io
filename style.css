@@ -315,7 +315,7 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
   .shelf { grid-template-columns: minmax(0, 1fr); }
   .project-notes { grid-column: auto; }
 }
-@media (min-width: 560px) and (max-width: 1099px) {
+@media (max-width: 1099px) {
   .project-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .project-card { height: 100%; }
 }
@@ -325,6 +325,14 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
 }
 @media (max-width: 559px) {
   .masthead { align-items: center; }
-  .project-card { min-height: 64px; }
+  .project-cards { gap: .35rem; }
+  .project-card {
+    min-height: 48px;
+    padding: .45rem .25rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .project-card .project-copy strong { font-size: clamp(.75rem, 3.2vw, .95rem); }
+  .project-card .project-copy > span { display: none; }
   #demo-frame { height: clamp(340px, 64svh, 520px); }
 }
