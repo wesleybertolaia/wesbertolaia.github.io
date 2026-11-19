@@ -1,8 +1,8 @@
 const campaigns = {
   night: {
     name: 'Night Shift', tag: 'Independent print fair · São Paulo',
-    title: 'A night for things made by hand.',
-    intro: 'Meet local printmakers, try a hands-on workshop, and take home something you won’t find anywhere else.',
+    title: 'Night Shift Print Fair',
+    intro: 'Browse local print editions, join a two-colour workshop, or drop in for the artist Q&A.',
     action: 'See the programme',
     info: 'Saturday · 16:00–22:00',
     details: [['16:00 · Doors open', 'Browse artist tables and limited-run editions.'], ['18:00 · Print workshop', 'Make and take home a two-colour print.'], ['20:00 · Artist Q&A', 'Hear how local studios get their work into the world.']],
@@ -10,8 +10,8 @@ const campaigns = {
   },
   canopy: {
     name: 'Common Canopy', tag: 'Neighbourhood tree care · São Paulo',
-    title: 'More shade starts on your street.',
-    intro: 'Give a Saturday morning to the trees that cool our neighbourhood. We bring the tools and show you what to do.',
+    title: 'Saturday Tree Care',
+    intro: 'Spend a morning watering and mulching young street trees. The team supplies tools, gloves and a short briefing.',
     action: 'See the volunteer plan',
     info: 'Saturday · 09:00–12:00',
     details: [['09:00 · Meet the team', 'Pick up gloves and meet your group.'], ['09:30 · Care for the trees', 'Water young trees and replenish mulch.'], ['11:30 · Pack up together', 'Share what you noticed and help reset the site.']],
@@ -21,7 +21,7 @@ const campaigns = {
 const portuguese = {
   night: {
     tag: 'Feira de impressão independente · São Paulo',
-    title: 'Uma noite para quem faz as coisas à mão.',
+    title: 'Feira Gráfica Night Shift',
     intro: 'Conheça artistas gráficos locais, participe de uma oficina e leve para casa uma edição que você não encontra em nenhum outro lugar.',
     action: 'Confira a programação completa', info: 'Sábado · das 16h às 22h',
     details: [['16h · Abertura da feira', 'Visite as mesas dos artistas e conheça as edições limitadas.'], ['18h · Oficina de impressão', 'Produza uma estampa de duas cores e leve sua criação para casa.'], ['20h · Conversa com os artistas', 'Descubra como os estúdios locais divulgam seus trabalhos.']],
@@ -29,7 +29,7 @@ const portuguese = {
   },
   canopy: {
     tag: 'Cuidado com as árvores do bairro · São Paulo',
-    title: 'Uma rua com mais sombra começa com a gente.',
+    title: 'Mutirão de Cuidado com as Árvores',
     intro: 'Dedique uma manhã de sábado às árvores que refrescam o bairro. A equipe fornece as ferramentas e acompanha quem está começando.',
     action: 'Veja a programação para voluntários', info: 'Sábado · das 9h às 12h',
     details: [['9h · Encontro com a equipe', 'Pegue as luvas e conheça seu grupo.'], ['9h30 · Cuidados com as árvores', 'Regue as mudas e reponha a cobertura do solo.'], ['11h30 · Encerramento coletivo', 'Compartilhe o que observou e ajude a organizar o espaço.']],
@@ -72,7 +72,7 @@ if (params.get('view') === 'campaign') {
   app.innerHTML = campaignMarkup(model, order);
 } else {
   app.innerHTML = `<section class="studio-intro"><p class="tag">Reusable web design</p><h1>Campaign Studio</h1>
-    <p>One set of sections, two distinct brands. Arrange a page and open the live result.</p></section>
+    <p>Choose a brand, arrange the sections, and preview the page before sharing it.</p></section>
     <div class="workspace"><aside><h2>Build a page</h2>
       <label>Brand<select id="brand" aria-label="Brand"><option value="night">Night Shift</option><option value="canopy">Common Canopy</option></select></label>
       <label>Campaign language<select id="campaign-language" aria-label="Campaign language"><option value="en">English</option><option value="pt-BR">Português do Brasil</option></select></label>

@@ -1,5 +1,9 @@
 (() => {
   const messages = {
+    "Web design": "Design web",
+    "& development.": "e desenvolvimento.",
+    "Five live projects, with the decisions behind each one.": "Cinco projetos no ar, com as decisões por trás de cada um.",
+
     "Campaign teams need to launch pages for different brands without rebuilding the layout each time.": "Equipes precisam lançar páginas para marcas diferentes sem reconstruir o layout toda vez.",
     "The same sections power two brands. Reviewers can reorder them, test longer Portuguese copy on a phone and open the resulting page.": "As mesmas seções atendem duas marcas. É possível reorganizá-las, testar textos mais longos em português no celular e abrir a página resultante.",
     "I verified that a shared link preserves the brand, language and section order.": "Verifiquei que o link compartilhado preserva a marca, o idioma e a ordem das seções.",

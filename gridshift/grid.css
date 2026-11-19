@@ -34,3 +34,7 @@ details p { max-width: 68ch; margin-top: .5rem; }
 
 .comparison { grid-column: 1 / -1; color: #bfd0c2; font-size: .78rem; }
 #pin { padding-inline: .65rem; font-size: .84rem; }
+
+.hero h1 { max-width: 19ch; font-size: clamp(2rem, 4.8vw, 4rem); }
+.budget { border-radius: 10px; padding: .65rem .75rem; background: #22362a; }
+.metric dd,.budget strong { font-variant-numeric: tabular-nums; }
