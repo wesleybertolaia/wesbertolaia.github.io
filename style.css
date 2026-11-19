@@ -336,3 +336,11 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
   .project-card .project-copy > span { display: none; }
   #demo-frame { height: clamp(340px, 64svh, 520px); }
 }
+
+.case-note-status {
+  margin-top: .95rem;
+  padding-top: .65rem;
+  border-top: 1px solid var(--line);
+  color: var(--mute);
+  font-size: .75rem;
+}

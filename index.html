@@ -6,8 +6,8 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Portfolio</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=mobile-project-row">
-  <script src="./locale.js?v=profile-strengths"></script>
+  <link rel="stylesheet" href="./style.css?v=case-specifics">
+  <script src="./locale.js?v=case-specifics"></script>
   <script src="./preview.js?v=inline-language" defer></script>
   <link rel="stylesheet" href="./locale.css?v=mobile-toggle">
   <script src="./entrance.js?v=sequence" defer></script>
@@ -75,18 +75,22 @@
         <h2 id="project-notes-title">Case study</h2>
         <div aria-live="polite">
           <dl data-project-note="carepath">
-            <dt>Problem tackled</dt><dd>Starting an online consultation can feel like a commitment. CarePath explains what happens next before asking patients to start the intake.</dd>
-            <dt>What I’d measure</dt><dd>Compare guided and direct entry on completed intakes per landing session. Check where people leave to see whether the guidance helps or adds friction.</dd>
+            <dt>Problem</dt><dd>Who reviews my request, and what happens after I start? Those questions can stop someone before they open the form.</dd>
+            <dt>Design decision</dt><dd>The guided route answers one question the visitor chooses. The direct route opens the same form preview immediately.</dd>
+            <dt>How I’d test it</dt><dd>Compare how many visitors reach the form preview and finish the demo in each route. Use drop-off at the question step to see whether guidance earns the extra click.</dd>
           </dl>
           <dl data-project-note="dentaldesk" hidden>
-            <dt>Problem tackled</dt><dd>Asking for details before showing availability gives patients little reason to continue. DentalDesk shows sample times before they submit a request.</dd>
-            <dt>What I’d measure</dt><dd>Test a times-first headline against a request-first headline. Compare submitted requests per landing session, then check whether more requests become confirmed visits.</dd>
+            <dt>Problem</dt><dd>A patient needs to know if a time fits their schedule and whether it’s confirmed before they can plan around it.</dd>
+            <dt>Design decision</dt><dd>The booking flow shows sample slots before asking for contact details. The review step explains that a request still needs clinic confirmation.</dd>
+            <dt>How I’d test it</dt><dd>Test “See dental visit times” against “Request a dental visit” with the same booking flow. Compare requests per landing session. In a real clinic, check confirmed visits too.</dd>
           </dl>
           <dl data-project-note="shiftledger" hidden>
-            <dt>Problem tackled</dt><dd>Breaks can make a first shift entry confusing. ShiftLedger offers an editable example so employees can see how the hours add up before saving.</dd>
-            <dt>What I’d measure</dt><dd>Compare first valid saves per new user with an editable example versus a blank form. Check for accidental saves of unchanged sample hours.</dd>
+            <dt>Problem</dt><dd>An 8-hour shift with a 30-minute unpaid break should count as 7h30. A wrong entry also changes the manager’s total.</dd>
+            <dt>Design decision</dt><dd>New users can load an editable example. The form checks the time range and break before adding net hours to the manager view.</dd>
+            <dt>How I’d test it</dt><dd>Compare the share of new users who save a correct first shift with an example versus a blank form. In a task using different hours, check how often people save the sample unchanged.</dd>
           </dl>
         </div>
+        <p class="case-note-status">Proposed tests with demo data.</p>
       </aside>
     </section>
   </main>

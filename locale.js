@@ -1,5 +1,19 @@
 (() => {
   const messages = {
+    "Problem": "Problema",
+    "Design decision": "Decisão de design",
+    "How I’d test it": "Como eu testaria",
+    "Proposed tests with demo data.": "Testes propostos com dados de demonstração.",
+    "Who reviews my request, and what happens after I start? Those questions can stop someone before they open the form.": "Quem vai analisar meu pedido e o que acontece depois? Essas dúvidas podem fazer alguém desistir antes de abrir o formulário.",
+    "The guided route answers one question the visitor chooses. The direct route opens the same form preview immediately.": "No caminho guiado, a pessoa escolhe uma dúvida e lê a resposta. O caminho direto abre a mesma prévia do formulário na hora.",
+    "Compare how many visitors reach the form preview and finish the demo in each route. Use drop-off at the question step to see whether guidance earns the extra click.": "Compararia quantas pessoas chegam à prévia do formulário e concluem a demo em cada caminho. A desistência na etapa da pergunta ajuda a avaliar se a orientação vale o clique extra.",
+    "A patient needs to know if a time fits their schedule and whether it’s confirmed before they can plan around it.": "Para se organizar, o paciente precisa saber se o horário cabe na agenda e se já está confirmado.",
+    "The booking flow shows sample slots before asking for contact details. The review step explains that a request still needs clinic confirmation.": "O fluxo mostra horários de exemplo antes de pedir dados de contato. A etapa de revisão explica que a clínica ainda precisa confirmar o pedido.",
+    "Test “See dental visit times” against “Request a dental visit” with the same booking flow. Compare requests per landing session. In a real clinic, check confirmed visits too.": "Testaria “Veja os horários de atendimento” contra “Solicite uma consulta odontológica”, usando o mesmo fluxo. Compararia pedidos por sessão e, em uma clínica real, também as consultas confirmadas.",
+    "An 8-hour shift with a 30-minute unpaid break should count as 7h30. A wrong entry also changes the manager’s total.": "Um turno de oito horas com 30 minutos de intervalo não remunerado deve somar 7h30. Um registro incorreto também altera o total do gestor.",
+    "New users can load an editable example. The form checks the time range and break before adding net hours to the manager view.": "Novos usuários podem carregar um exemplo editável. O formulário valida o início, o fim e o intervalo antes de somar as horas líquidas na visão do gestor.",
+    "Compare the share of new users who save a correct first shift with an example versus a blank form. In a task using different hours, check how often people save the sample unchanged.": "Compararia a proporção de novos usuários que registram corretamente o primeiro turno com exemplo ou formulário em branco. Em uma tarefa com horários diferentes, observaria quantos salvam o exemplo sem editar.",
+
     "Starting an online consultation can feel like a commitment. CarePath explains what happens next before asking patients to start the intake.": "Iniciar uma consulta online pode parecer um compromisso. O CarePath explica o que acontece depois antes de pedir que o paciente inicie o formulário.",
     "Compare guided and direct entry on completed intakes per landing session. Check where people leave to see whether the guidance helps or adds friction.": "Comparar a entrada guiada e a direta por formulários concluídos por sessão. Observar em que etapa as pessoas saem para saber se a orientação ajuda ou dificulta.",
     "Asking for details before showing availability gives patients little reason to continue. DentalDesk shows sample times before they submit a request.": "Pedir dados antes de mostrar a disponibilidade reduz o incentivo para continuar. O DentalDesk mostra horários de exemplo antes do envio da solicitação.",
