@@ -207,14 +207,12 @@ h1 em { color: var(--burnt-orange); }
 .service .service-action:hover { background: var(--peach); color: var(--ink); }
 .service .service-action:focus-visible { outline-offset: -3px; }
 .service-daycare {
-  grid-template-areas: "title title" "copy copy" "rate action";
   border-radius: 6px 20px 20px 20px;
-  border-top: 3px solid #bd7d45;
+  box-shadow: inset 0 2px 0 #bd7d45;
   background: #fff1d9;
 }
-.service-daycare .service-heading { padding-top: calc(var(--service-pad) - 2px); }
-.service-daycare .service-price { justify-items: start; align-content: center; padding: .2rem 0 .42rem var(--service-pad); }
 .service-daycare .service-action {
+  justify-self: end;
   width: auto;
   margin: 0 .42rem .42rem 0;
   padding-inline: .45rem;
@@ -225,22 +223,23 @@ h1 em { color: var(--burnt-orange); }
 .service-stay {
   --card-rule: #cf8b61;
   --card-muted: #ffdec9;
-  grid-template-areas: "title rate" "copy rate" "action action";
   border-radius: 14px;
   border-color: #8f421e;
   background: #7b371a;
   color: #fff8ef;
 }
-.service-stay .service-description { padding-right: 0; }
 .service-stay .service-price {
-  align-self: center;
-  justify-items: center;
-  margin: .4rem .45rem .4rem 0;
-  padding: .42rem .48rem;
+  position: relative;
+  isolation: isolate;
+  color: #58270e;
+}
+.service-stay .service-price::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--service-pad) - .28rem) calc(var(--service-pad) - .32rem) 0 -.32rem;
+  z-index: -1;
   border-radius: 8px;
   background: #ffe0b6;
-  color: #58270e;
-  text-align: center;
 }
 .service-stay .service-price strong { font: 700 clamp(1.33rem, 2.7vw, 2rem)/1 Georgia, serif; letter-spacing: -.05em; }
 .service-stay .service-unit { color: #643617; }
