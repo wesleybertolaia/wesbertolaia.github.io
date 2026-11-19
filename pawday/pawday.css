@@ -84,40 +84,46 @@ h1 em { color: var(--burnt-orange); }
 .landing-dialog::backdrop { background: #39241677; }
 .landing-dialog .booking { margin: 0; }
 .portrait {
+  --artwork: url("./pawday-paw.webp?v=soft-focus");
+  /* Follow the gaps between the toes and the central portrait. */
+  --cat-edge: 49.25% 0%, 49.25% 28%, 49% 32%, 47.3% 35%, 46% 37%,
+    44% 38%, 41.6% 40%, 36% 42%, 33% 43%, 30.5% 44.5%, 29.5% 46%,
+    30.2% 48%, 29.5% 50%, 28.8% 52%, 28% 54%, 27% 56%, 25.45% 58%,
+    23.45% 60%, 20.5% 62%, 19% 64%;
+  --dog-edge: 76.5% 64%, 76.5% 62%, 74% 60%, 72.25% 58%, 71% 56%,
+    70% 54%, 69% 52%, 68.3% 50%, 67.5% 48%, 66.8% 46%, 65.5% 44%,
+    64% 42%, 56.2% 40%, 55.4% 38%, 53.2% 36%, 51% 33%, 49.25% 28%, 49.25% 0%;
   position: relative;
   align-self: center;
   justify-self: center;
   width: min(92%, 460px, 52svh);
+  transform: scaleX(-1);
 }
-.portrait img { position: relative; display: block; width: 100%; height: auto; }
-.portrait img,.portrait::after { transform: scaleX(-1); }
-@property --pet-focus {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  clip-path: polygon(var(--cat-edge), 0 64%, 0 100%, 100% 100%, 100% 64%, var(--dog-edge));
 }
-.portrait::after {
-  --artwork: url("./pawday-paw.webp?v=soft-focus");
-  --blur-weight: calc(var(--pet-focus, 0) * .68);
+.portrait::before,.portrait::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0;
   background: var(--artwork) center / contain no-repeat;
-  filter: blur(clamp(1px, .38vw, 2.2px)) brightness(1.22) saturate(.68);
-  mask-image: var(--artwork), linear-gradient(90deg,
-    rgb(0 0 0 / calc(.3 - var(--blur-weight))) 26%,
-    transparent 46% 54%,
-    rgb(0 0 0 / calc(.3 + var(--blur-weight))) 75%);
-  mask-position: center;
-  mask-size: contain, 100% 100%;
-  mask-repeat: no-repeat;
-  mask-composite: intersect;
 }
-.portrait[data-pet]::after { opacity: 1; }
-.portrait[data-pet="cat"] { --pet-focus: .44; rotate: 2deg; }
-.portrait[data-pet="dog"] { --pet-focus: -.44; rotate: -2deg; }
+.portrait::before {
+  clip-path: polygon(0 0, var(--cat-edge), 0 64%);
+  transform-origin: 25% 34%;
+}
+.portrait::after {
+  clip-path: polygon(var(--dog-edge), 100% 0, 100% 64%);
+  transform-origin: 75% 34%;
+}
+.portrait[data-pet="cat"]::before { scale: 1.07; translate: -1% -1%; }
+.portrait[data-pet="cat"]::after { scale: .94; }
+.portrait[data-pet="dog"]::before { scale: .94; }
+.portrait[data-pet="dog"]::after { scale: 1.07; translate: 1% -1%; }
 @media (min-width: 665px) and (min-height: 400px) {
   .hero-actions > .button { display: none; }
 }
@@ -249,9 +255,10 @@ header .language-toggle button[aria-pressed=true] { background: #ffead0; border-
 @media (prefers-reduced-motion: no-preference) {
   .portrait {
     animation: settle-in .75s ease-out both;
-    transition: --pet-focus .42s ease, rotate .46s cubic-bezier(.28,.78,.2,1);
   }
-  .portrait::after { transition: opacity .3s ease; }
+  .portrait::before,.portrait::after {
+    transition: scale .38s cubic-bezier(.28,.78,.2,1), translate .38s cubic-bezier(.28,.78,.2,1);
+  }
   .species button { transition: background-color .2s ease, border-color .2s ease; }
   .landing-dialog[open]::backdrop { animation: settle-in .35s ease both; }
   .service-action { transition: background-color .18s ease, color .18s ease; }
