@@ -1,5 +1,7 @@
 (() => {
   const messages = {
+    "Loading {project}…": "Carregando {project}…",
+    "Preview unavailable. Open the full site or select the project again.": "Demo indisponível. Abra o site completo ou selecione o projeto novamente.",
     "Both": "Ambos",
     "Dog & cat care · 10% off": "Cão e gato · 10% de desconto",
     "Sample cat": "Gato de exemplo",

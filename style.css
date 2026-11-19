@@ -45,7 +45,7 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 .project-card:nth-child(1) { --project-accent: #d4b0ee; --project-shade: #32253d; }
 .project-card:nth-child(2) { --project-accent: #8bdfc7; --project-shade: #1e3836; }
-.project-card:nth-child(3) { --project-accent: #f8d675; --project-shade: #303b31; }
+.project-card:nth-child(3) { --project-accent: #a9cffb; --project-shade: #223650; }
 .project-card:hover { border-color: var(--project-accent); }
 .project-card[aria-pressed="true"] {
   border-color: var(--project-accent);
@@ -453,20 +453,45 @@ iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px 
 }
 
 
-.demo-viewport { min-width: 0; min-height: 0; }
-#demo-frame { height: auto; aspect-ratio: 16 / 9; }
-
+.preview-bar { min-height: 48px; flex-wrap: nowrap; }
+.preview-bar h2 { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.preview-bar a { flex: none; }
+.demo-viewport {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.demo-viewport .demo-frame {
+  position: absolute;
+  inset: 0 auto auto 50%;
+  border: 0;
+  transform: translateX(-50%) scale(var(--demo-scale, 1));
+  transform-origin: 50% 0;
+  visibility: hidden;
+}
+.demo-viewport .demo-frame.is-visible { visibility: visible; }
+.preview-status {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 .75rem;
+  width: fit-content;
+  max-width: calc(100% - 1rem);
+  margin: auto;
+  padding: .42rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  color: var(--ink);
+  background: var(--panel);
+  font-size: .8rem;
+  text-align: center;
+  box-shadow: 0 5px 18px #0004;
+}
 @media (min-width: 1100px) and (min-height: 640px) {
-  .portfolio-home .demo-viewport {
-    container-type: size;
-    display: grid;
-    align-content: start;
-    justify-items: center;
-    background: var(--bg);
-  }
-  .portfolio-home #demo-frame {
-    width: min(100%, calc(100cqh * 16 / 9));
-  }
+  .portfolio-home .demo-viewport { aspect-ratio: auto; }
 }
 
 /* Preserve scrolling for longer notes without moving the project layout. */

@@ -95,7 +95,7 @@ h1 em { color: var(--burnt-orange); }
 .portrait-dogs { transform-origin: 44% 58%; }
 .portrait-cats { transform-origin: 56% 58%; }
 .portrait-sticker {
-  background-image: url("./pawday-stickers.webp");
+  background-image: url("./pawday-stickers.webp?v=forward");
   background-repeat: no-repeat;
   aspect-ratio: var(--crop-width) / var(--crop-height);
   background-size: calc(100% * 960 / var(--crop-width)) calc(100% * 960 / var(--crop-height));
@@ -118,40 +118,40 @@ h1 em { color: var(--burnt-orange); }
   --crop-y: 16;
   --crop-width: 218;
   --crop-height: 267;
-  top: 6%;
-  left: 21.5%;
-  width: 27%;
-  rotate: -6deg;
+  top: 30.5%;
+  left: 2.5%;
+  width: 25.5%;
+  rotate: -13deg;
 }
 .portrait-tabby {
   --crop-x: 553;
   --crop-y: 16;
   --crop-width: 217;
   --crop-height: 267;
-  top: 6%;
-  right: 21.5%;
-  width: 27%;
-  rotate: 6deg;
+  top: 30.5%;
+  right: 2.5%;
+  width: 25.5%;
+  rotate: 13deg;
 }
 .portrait-shepherd {
   --crop-x: 185;
   --crop-y: 292;
   --crop-width: 218;
   --crop-height: 262;
-  top: 30.5%;
-  left: 2.5%;
-  width: 25.5%;
-  rotate: -17deg;
+  top: 6%;
+  left: 21.5%;
+  width: 27%;
+  rotate: -6deg;
 }
 .portrait-tuxedo {
   --crop-x: 553;
   --crop-y: 291;
   --crop-width: 216;
   --crop-height: 264;
-  top: 30.5%;
-  right: 2.5%;
-  width: 25.5%;
-  rotate: 17deg;
+  top: 6%;
+  right: 21.5%;
+  width: 27%;
+  rotate: 6deg;
 }
 .portrait[data-pet="cat"] .portrait-cats,.portrait[data-pet="dog"] .portrait-dogs { transform: scale(1.045); }
 .portrait[data-pet="cat"] .portrait-dogs,.portrait[data-pet="dog"] .portrait-cats { transform: scale(.955); }
@@ -159,6 +159,9 @@ h1 em { color: var(--burnt-orange); }
   .hero-actions > .button { display: none; }
 }
 .hero-species { flex-basis: 100%; }
+@media (min-width: 665px) and (min-height: 400px) {
+  .hero-actions .hero-species { flex-basis: auto; }
+}
 .hero-species button { min-width: 66px; }
 #services .section-head .species { display: none; }
 #service-dialog-slot .section-head .species { display: flex; }
@@ -326,7 +329,6 @@ header .language-toggle button[aria-pressed=true] { background: #ffead0; border-
   .service-description { font-size: .8rem; }
   .service-stay .service-price strong { font-size: 1.36rem; }
   .hero .kicker { display: none; }
-  .hero-actions .hero-species { flex-basis: auto; }
   .hero-actions { gap: .3rem .55rem; }
   .hero-species button { min-width: 0; padding-inline: .55rem; }
   .hero-copy { padding-block: .6rem; }
